@@ -1,0 +1,9 @@
+C:\Users\levim\Downloads\tutoOpenCV\tutoOpenCV\tutoOpenCV\x64\Debug\tutoOpenCV.vcxprojAssemblyReference.cache
+C:\Users\levim\Downloads\tutoOpenCV\tutoOpenCV\tutoOpenCV\x64\Debug\tutoOpenCV.MyForm.resources
+C:\Users\levim\Downloads\tutoOpenCV\tutoOpenCV\tutoOpenCV\x64\Debug\tutoOpenCV.vcxproj.GenerateResource.cache
+C:\Users\levim\Downloads\AulasPDI\tutoOpenCV\x64\Debug\tutoOpenCV.vcxprojAssemblyReference.cache
+C:\Users\levim\Downloads\AulasPDI\tutoOpenCV\x64\Debug\tutoOpenCV.TelaPrincipal.resources
+C:\Users\levim\Downloads\AulasPDI\tutoOpenCV\x64\Debug\tutoOpenCV.vcxproj.GenerateResource.cache
+C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\x64\Debug\tutoOpenCV.vcxprojAssemblyReference.cache
+C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\x64\Debug\tutoOpenCV.TelaPrincipal.resources
+C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\x64\Debug\tutoOpenCV.vcxproj.GenerateResource.cache

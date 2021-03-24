@@ -1,0 +1,24 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(519,5): warning MSB8028: O diretório intermediário (x64\Debug\) contém arquivos compartilhados de outro projeto (tutoOpenCV.vcxproj). Isso pode levar a um comportamento incorreto de limpeza e recompilação.
+  TelaPrincipal.cpp
+C:\opencv\build\include\opencv2\core\cvstd.hpp(575): warning C4793: 'cv::String::String': função compilada como nativa:
+  	Encontrado um intrínseco não suportado em código gerenciado
+C:\opencv\build\include\opencv2\core\cuda.inl.hpp(105): warning C4793: 'cv::cuda::GpuMat::GpuMat': função compilada como nativa:
+  	Encontrado um intrínseco não suportado em código gerenciado
+C:\opencv\build\include\opencv2\core\cuda.inl.hpp(395): warning C4793: 'cv::cuda::HostMem::HostMem': função compilada como nativa:
+  	Encontrado um intrínseco não suportado em código gerenciado
+C:\opencv\build\include\opencv2\core\mat.inl.hpp(576): warning C4793: 'cv::Mat::Mat': função compilada como nativa:
+  	Encontrado um intrínseco não suportado em código gerenciado
+C:\opencv\build\include\opencv2\core\mat.inl.hpp(900): warning C4793: 'cv::Mat::release': função compilada como nativa:
+  	Encontrado um intrínseco não suportado em código gerenciado
+C:\opencv\build\include\opencv2\core\mat.inl.hpp(2254): warning C4793: 'cv::SparseMat::addref': função compilada como nativa:
+  	Encontrado um intrínseco não suportado em código gerenciado
+C:\opencv\build\include\opencv2\core\mat.inl.hpp(3857): warning C4793: 'cv::UMat::addref': função compilada como nativa:
+  	Encontrado um intrínseco não suportado em código gerenciado
+C:\opencv\build\include\opencv2\core\ptr.inl.hpp(67): warning C4793: 'cv::detail::PtrOwner::incRef': função compilada como nativa:
+  	Encontrado um intrínseco não suportado em código gerenciado
+C:\opencv\build\include\opencv2\core\ptr.inl.hpp(72): warning C4793: 'cv::detail::PtrOwner::decRef': função compilada como nativa:
+  	Encontrado um intrínseco não suportado em código gerenciado
+C:\opencv\build\include\opencv2\core\cvstd.hpp(657): warning C4793: 'cv::String::operator=': função compilada como nativa:
+  	Encontrado um intrínseco não suportado em código gerenciado
+  TelaPrincipal.obj : Módulo MSIL encontrado; vínculo incremental está desabilitado para MSIL; executando link completo
+  tutoOpenCV.vcxproj -> C:\Users\Gamer - PC\Documents\PDI\AulasPDI\x64\Debug\AulasPDI.exe

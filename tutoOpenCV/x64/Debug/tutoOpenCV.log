@@ -14,6 +14,8 @@ C:\opencv\build\include\opencv2\core\mat.inl.hpp(2254): warning C4793: 'cv::Spar
   	Encontrado um intrínseco não suportado em código gerenciado
 C:\opencv\build\include\opencv2\core\mat.inl.hpp(3857): warning C4793: 'cv::UMat::addref': função compilada como nativa:
   	Encontrado um intrínseco não suportado em código gerenciado
+C:\opencv\build\include\opencv2\core\mat.inl.hpp(798): warning C4793: 'cv::Mat::operator=': função compilada como nativa:
+  	Encontrado um intrínseco não suportado em código gerenciado
 C:\opencv\build\include\opencv2\core\ptr.inl.hpp(67): warning C4793: 'cv::detail::PtrOwner::incRef': função compilada como nativa:
   	Encontrado um intrínseco não suportado em código gerenciado
 C:\opencv\build\include\opencv2\core\ptr.inl.hpp(72): warning C4793: 'cv::detail::PtrOwner::decRef': função compilada como nativa:

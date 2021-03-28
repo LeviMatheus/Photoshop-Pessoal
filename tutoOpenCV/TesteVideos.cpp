@@ -20,47 +20,72 @@ int b, g, r;
 int tamBloco = 1;
 Mat src, dst, imgBinarizada, imgLaplace;
 bool primeiroLoop = true;
+Mat modificando;
+Mat testeImg;
 
+void sobrescreveImg(Mat img) {
+    imwrite("Imagem.jpg", img);
+    modificando = imread("imagem.jpg");
+}
 
-void LaplaceEBinarizacao(Mat modificado) {
-    cvtColor(modificado, imgBinarizada, COLOR_BGR2GRAY);//Deixando em preto e branco
-    imshow("Binarizada", imgBinarizada);
-    Laplacian(imgBinarizada, imgLaplace, imgBinarizada.depth(), 3, 1, 0, BORDER_REPLICATE);
-    Mat abs_img;
-    convertScaleAbs(imgLaplace, abs_img);
-    imshow("Laplace", abs_img);
+void LaplaceEBinarizacao() {
+    try {
+        modificando = imread("Imagem.jpg");
+        cvtColor(modificando, imgBinarizada, COLOR_BGR2GRAY, 0);//Deixando em preto e branco
+        Laplacian(modificando, imgLaplace, modificando.depth(), 3, 1, 0, BORDER_REPLICATE);
+        Mat abs_img;
+        convertScaleAbs(imgLaplace, abs_img);
+        sobrescreveImg(abs_img);
+        imshow("Imagem", modificando);
+    }catch (std::exception& ex) {
+        string excp = ex.what();
+        System::String^ texto = gcnew System::String(excp.c_str());
+        System::Windows::Forms::MessageBox::Show("Ocorreu um erro: " + texto);
+    }
+}
+
+void TesteVideos::passaAlta(int tipo)
+{
+    if (tipo == 1)
+        LaplaceEBinarizacao();
 }
 
 void aplicarBlur(int, void*) {
     blur(src, dst, Size(3 + tamBloco, 3 + tamBloco), Point(-1, -1));
-    imshow("Imagem", dst);
-    LaplaceEBinarizacao(dst);
+    sobrescreveImg(dst);
+    imshow("Imagem", modificando);
+    //modificando = dst;
+    //LaplaceEBinarizacao(dst);
 }
 
 void aplicarGaussianBlur(int, void*) {
     GaussianBlur(src, dst, Size(3 + tamBloco * 2, 3 + tamBloco * 2), 0, 0);
-    imshow("Imagem", dst);
-    LaplaceEBinarizacao(dst);
+    sobrescreveImg(dst);
+    imshow("Imagem", modificando);
+    //imshow("Imagem", modificando);
+    //LaplaceEBinarizacao(dst);
 }
 
 void aplicarMedianBlur(int, void*) {
     medianBlur(src, dst, 1 + tamBloco * 2);
-    imshow("Imagem", dst);
-    LaplaceEBinarizacao(dst);
+    sobrescreveImg(dst);
+    imshow("Imagem", modificando);
+    //imshow("Imagem", modificando);
+    //LaplaceEBinarizacao(dst);
 }
 
 void aplicarBilateralFilter(int, void*) {
     try {
         bilateralFilter(src, dst, tamBloco, tamBloco * 2, tamBloco / 2);
-        LaplaceEBinarizacao(dst);
+        sobrescreveImg(dst);
+        imshow("Imagem", modificando);
+        //LaplaceEBinarizacao(dst);
     }
     catch (std::exception& ex) {
         string excp = ex.what();
         System::String^ texto = gcnew System::String(excp.c_str());
         System::Windows::Forms::MessageBox::Show("Ocorreu um erro: " + texto);
     }
-    
-    imshow("Imagem", dst);
 }
 
 void onMouse(int event, int x, int y, int flags, void* userdata) {
@@ -90,11 +115,17 @@ void onMouse(int event, int x, int y, int flags, void* userdata) {
     }
 }
 
-void TesteVideos::TracksEFiltros(cv::String winName) {
-    createTrackbar("Blur", winName, &tamBloco, 50, aplicarBlur);
-    createTrackbar("Gaussian", winName, &tamBloco, 50, aplicarGaussianBlur);
-    createTrackbar("Median", winName, &tamBloco, 1, aplicarMedianBlur);
-    createTrackbar("Bilateral", winName, &tamBloco, 50, aplicarBilateralFilter);
+void TesteVideos::TracksEFiltros(cv::String winName, int tipo) {
+    src = modificando;
+    imshow("Imagem", modificando);
+    if (tipo == 0)
+        createTrackbar("Blur", winName, &tamBloco, 50, aplicarBlur);
+    else if (tipo == 1)
+        createTrackbar("Gaussian", winName, &tamBloco, 50, aplicarGaussianBlur);
+    else if (tipo == 2)
+        createTrackbar("Median", winName, &tamBloco, 1, aplicarMedianBlur);
+    else
+        createTrackbar("Bilateral", winName, &tamBloco, 50, aplicarBilateralFilter);
 }
 
 int TesteVideos::abrirCamera()
@@ -128,13 +159,15 @@ int TesteVideos::abrirCamera()
             imshow("Live", frame);
 
             if (waitKey(5) == 32) {//trava a imagem com SPACE tipo um screenshot
+                modificando = frame;
                 cv::destroyWindow("Live");
                 //imshow("captura", frame);
                 //imwrite("captura", frame);
-                salvamostra(frame, 1);
+                //salvamostra(modificando, 1);
+                SalvarImg(modificando);
                 //criar trackbar e habilitar os filtros
-                src = imread("Imagem.jpg");
-                TracksEFiltros("Imagem");
+                //src = imread("Imagem.jpg");
+                //TracksEFiltros("Imagem");
                 //System::Windows::Forms::MessageBox::Show("Tela capturada");
                 //colorArray = Mat(COLOR_ROWS, COLOR_COLS, CV_8UC3, cv::Scalar(0, 0, 0));
                 //namedWindow("Color");
@@ -150,21 +183,28 @@ int TesteVideos::abrirCamera()
 
 void TesteVideos::salvamostra(cv::Mat img, int op)
 {
-    /*if (op == 0) {//mostrar e salvar comum (operacao 0)
-        imshow("Imagem", img);
-        imwrite("Imagem.jpg", img);
-    }
-    else {//mostrar,salvar e passar como parametro para o callback
-        printTela = img;
-        imshow("Imagem", img);
-        imwrite("Imagem.jpg", img);
-        setMouseCallback("Imagem", onMouse, &img);
-    }*/
-    System::Windows::Forms::MessageBox::Show("Clique em um local da imagem para mostrar a cor");
+    //System::Windows::Forms::MessageBox::Show("Clique em um local da imagem para mostrar a cor");
     printTela = img;
-    imshow("Imagem", img);
-    imwrite("Imagem.jpg", img);
+    //imshow("Imagem", img);
+    //imwrite("Imagem.jpg", img);
+    SalvarImg(img);
+    MostrarImg(img);
     setMouseCallback("Imagem", onMouse, &img);
+}
+
+void TesteVideos::SalvarImg(cv::Mat img) {
+    imwrite("Imagem.jpg", img);
+}
+
+void TesteVideos::MostrarImg(cv::Mat img) {
+    imshow("Imagem", img);
+    printTela = img;
+    setMouseCallback("Imagem", onMouse, &modificando);
+}
+
+void TesteVideos::LerImg()
+{
+    modificando = imread("Imagem.jpg");
 }
 
 

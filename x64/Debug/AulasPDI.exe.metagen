@@ -19,5 +19,7 @@ Struct TesteVideos: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Seal
 Class AulasPDI.TelaPrincipal: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.ListBox listHistórico : Public
   Methods:
     geraHistograma(Mat*, Mat*, Mat*): PrivateScope, Public, HideBySig

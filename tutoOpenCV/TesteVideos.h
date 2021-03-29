@@ -14,5 +14,6 @@ public: void TracksEFiltros(cv::String winName, int tipo);
 public: void passaAlta(int tipo);
 public: void MatToImg(cv::Mat img);
 public: cv::Mat modificando;
+public: cv::Mat algebrica;
 };
 

@@ -22,6 +22,7 @@ Mat src, dst, imgBinarizada, imgLaplace;
 bool primeiroLoop = true;
 Mat modificando;
 Mat testeImg;
+Mat algebrica;
 
 void sobrescreveImg(Mat img) {
     imwrite("Imagem.jpg", img);
@@ -184,7 +185,6 @@ int TesteVideos::abrirCamera()
 void TesteVideos::salvamostra(cv::Mat img, int op)
 {
     //System::Windows::Forms::MessageBox::Show("Clique em um local da imagem para mostrar a cor");
-    printTela = img;
     //imshow("Imagem", img);
     //imwrite("Imagem.jpg", img);
     SalvarImg(img);

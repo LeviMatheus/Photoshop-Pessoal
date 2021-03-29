@@ -115,6 +115,17 @@ namespace AulasPDI {
 	private: System::Windows::Forms::ToolStripButton^ btRestaurar;
 	private: System::Windows::Forms::ToolStripDropDownButton^ btPassaAlta;
 	private: System::Windows::Forms::ToolStripMenuItem^ btLaplace;
+	public: System::Windows::Forms::ListBox^ listHistórico;
+	private:
+
+	private: System::Windows::Forms::ToolStripButton^ btHistorico;
+	private: System::Windows::Forms::ToolStripDropDownButton^ btAlgebricas;
+	private: System::Windows::Forms::ToolStripMenuItem^ btAdicao;
+	private: System::Windows::Forms::ToolStripMenuItem^ btSubtracao;
+	private: System::Windows::Forms::ToolStripMenuItem^ btMultiplicacao;
+	private: System::Windows::Forms::ToolStripMenuItem^ btDivisao;
+	private: System::Windows::Forms::OpenFileDialog^ ofd2;
+
 
 
 
@@ -185,9 +196,17 @@ namespace AulasPDI {
 			this->btPassaAlta = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->btLaplace = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btHistograma = (gcnew System::Windows::Forms::ToolStripButton());
+			this->btAlgebricas = (gcnew System::Windows::Forms::ToolStripDropDownButton());
+			this->btAdicao = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btSubtracao = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btMultiplicacao = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btDivisao = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStripSeparator1 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->btReabrir = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btRestaurar = (gcnew System::Windows::Forms::ToolStripButton());
+			this->btHistorico = (gcnew System::Windows::Forms::ToolStripButton());
+			this->listHistórico = (gcnew System::Windows::Forms::ListBox());
+			this->ofd2 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->menuStrip1->SuspendLayout();
 			this->toolBotoes->SuspendLayout();
 			this->SuspendLayout();
@@ -234,9 +253,10 @@ namespace AulasPDI {
 			// toolBotoes
 			// 
 			this->toolBotoes->GripStyle = System::Windows::Forms::ToolStripGripStyle::Hidden;
-			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(9) {
+			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(11) {
 				this->btCamera, this->btImagem,
-					this->btCanais, this->btFBlur, this->btPassaAlta, this->btHistograma, this->toolStripSeparator1, this->btReabrir, this->btRestaurar
+					this->btCanais, this->btFBlur, this->btPassaAlta, this->btHistograma, this->btAlgebricas, this->toolStripSeparator1, this->btReabrir,
+					this->btRestaurar, this->btHistorico
 			});
 			this->toolBotoes->LayoutStyle = System::Windows::Forms::ToolStripLayoutStyle::Flow;
 			this->toolBotoes->Location = System::Drawing::Point(0, 0);
@@ -343,28 +363,28 @@ namespace AulasPDI {
 			// btFB1
 			// 
 			this->btFB1->Name = L"btFB1";
-			this->btFB1->Size = System::Drawing::Size(180, 22);
+			this->btFB1->Size = System::Drawing::Size(121, 22);
 			this->btFB1->Text = L"Blur";
 			this->btFB1->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB1_Click);
 			// 
 			// btFB2
 			// 
 			this->btFB2->Name = L"btFB2";
-			this->btFB2->Size = System::Drawing::Size(180, 22);
+			this->btFB2->Size = System::Drawing::Size(121, 22);
 			this->btFB2->Text = L"Gaussian";
 			this->btFB2->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB2_Click);
 			// 
 			// btFB3
 			// 
 			this->btFB3->Name = L"btFB3";
-			this->btFB3->Size = System::Drawing::Size(180, 22);
+			this->btFB3->Size = System::Drawing::Size(121, 22);
 			this->btFB3->Text = L"Median";
 			this->btFB3->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB3_Click);
 			// 
 			// btFB4
 			// 
 			this->btFB4->Name = L"btFB4";
-			this->btFB4->Size = System::Drawing::Size(180, 22);
+			this->btFB4->Size = System::Drawing::Size(121, 22);
 			this->btFB4->Text = L"Bilateral";
 			this->btFB4->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB4_Click);
 			// 
@@ -381,7 +401,7 @@ namespace AulasPDI {
 			// btLaplace
 			// 
 			this->btLaplace->Name = L"btLaplace";
-			this->btLaplace->Size = System::Drawing::Size(180, 22);
+			this->btLaplace->Size = System::Drawing::Size(114, 22);
 			this->btLaplace->Text = L"Laplace";
 			this->btLaplace->Click += gcnew System::EventHandler(this, &TelaPrincipal::btLaplace_Click);
 			// 
@@ -394,6 +414,45 @@ namespace AulasPDI {
 			this->btHistograma->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
 			this->btHistograma->ToolTipText = L"Mostrar histograma da imagem";
 			this->btHistograma->Click += gcnew System::EventHandler(this, &TelaPrincipal::btHistograma_Click);
+			// 
+			// btAlgebricas
+			// 
+			this->btAlgebricas->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+				this->btAdicao,
+					this->btSubtracao, this->btMultiplicacao, this->btDivisao
+			});
+			this->btAlgebricas->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btAlgebricas->Name = L"btAlgebricas";
+			this->btAlgebricas->Size = System::Drawing::Size(75, 19);
+			this->btAlgebricas->Text = L"Algébricas";
+			this->btAlgebricas->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btAlgebricas->ToolTipText = L"Operações algébricas com imagens";
+			// 
+			// btAdicao
+			// 
+			this->btAdicao->Name = L"btAdicao";
+			this->btAdicao->Size = System::Drawing::Size(180, 22);
+			this->btAdicao->Text = L"Adição";
+			this->btAdicao->Click += gcnew System::EventHandler(this, &TelaPrincipal::btAdicao_Click);
+			// 
+			// btSubtracao
+			// 
+			this->btSubtracao->Name = L"btSubtracao";
+			this->btSubtracao->Size = System::Drawing::Size(180, 22);
+			this->btSubtracao->Text = L"Subtração";
+			this->btSubtracao->Click += gcnew System::EventHandler(this, &TelaPrincipal::btSubtracao_Click);
+			// 
+			// btMultiplicacao
+			// 
+			this->btMultiplicacao->Name = L"btMultiplicacao";
+			this->btMultiplicacao->Size = System::Drawing::Size(180, 22);
+			this->btMultiplicacao->Text = L"Multiplicação";
+			// 
+			// btDivisao
+			// 
+			this->btDivisao->Name = L"btDivisao";
+			this->btDivisao->Size = System::Drawing::Size(180, 22);
+			this->btDivisao->Text = L"Divisão";
 			// 
 			// toolStripSeparator1
 			// 
@@ -420,6 +479,33 @@ namespace AulasPDI {
 			this->btRestaurar->ToolTipText = L"Restaurar imagem a original";
 			this->btRestaurar->Click += gcnew System::EventHandler(this, &TelaPrincipal::btRestaurar_Click);
 			// 
+			// btHistorico
+			// 
+			this->btHistorico->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btHistorico->Name = L"btHistorico";
+			this->btHistorico->Size = System::Drawing::Size(59, 19);
+			this->btHistorico->Text = L"Histórico";
+			this->btHistorico->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btHistorico->ToolTipText = L"Clique para ver o histórico de ações";
+			this->btHistorico->Click += gcnew System::EventHandler(this, &TelaPrincipal::btHistorico_Click);
+			// 
+			// listHistórico
+			// 
+			this->listHistórico->Dock = System::Windows::Forms::DockStyle::Right;
+			this->listHistórico->FormattingEnabled = true;
+			this->listHistórico->HorizontalScrollbar = true;
+			this->listHistórico->Location = System::Drawing::Point(404, 23);
+			this->listHistórico->Name = L"listHistórico";
+			this->listHistórico->ScrollAlwaysVisible = true;
+			this->listHistórico->Size = System::Drawing::Size(380, 514);
+			this->listHistórico->TabIndex = 3;
+			this->listHistórico->Visible = false;
+			// 
+			// ofd2
+			// 
+			this->ofd2->FileName = L"openFileDialog2";
+			this->ofd2->Filter = L"Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
+			// 
 			// TelaPrincipal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -427,6 +513,7 @@ namespace AulasPDI {
 			this->BackColor = System::Drawing::Color::White;
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(784, 561);
+			this->Controls->Add(this->listHistórico);
 			this->Controls->Add(this->toolBotoes);
 			this->Controls->Add(this->menuStrip1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
@@ -454,8 +541,9 @@ namespace AulasPDI {
 		/* colocando a lena de fundo */
 		Image^ imgFundo = Image::FromFile("lena.jpg");
 		TelaPrincipal::BackgroundImage = imgFundo;
-		imshow("Imagem", testeVideos->modificando);
-		imwrite("Imagem.jpg", original);//lena deve existir na pasta do projeto se n vai dar erro
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		/*imshow("Imagem", testeVideos->modificando); estava com essas duas linhas de códigos antes na inicializacao
+		imwrite("Imagem.jpg", original);*///lena deve existir na pasta do projeto se n vai dar erro
 		
 		//Carregar icones do projeto
 		btCamera->Text = "";
@@ -472,6 +560,10 @@ namespace AulasPDI {
 		btReabrir->Image = Image::FromFile("icones/window.png");
 		btRestaurar->Text = "";
 		btRestaurar->Image = Image::FromFile("icones/restaurar.png");
+		btHistorico->Text = "";
+		btHistorico->Image = Image::FromFile("icones/history.png");
+		btAlgebricas->Text = "";
+		btAlgebricas->Image = Image::FromFile("icones/mathematic.png");
 
 		//Texto de boas vindas e dicas
 		/*System::Windows::Forms::MessageBox::Show("Bem vindo ao meu editor ! " +
@@ -550,6 +642,7 @@ namespace AulasPDI {
 	private: System::Void btCamera_Click(System::Object^ sender, System::EventArgs^ e) {
 		testeVideos->abrirCamera();
 		testeVideos->MostrarImg(testeVideos->modificando);
+		listHistórico->Items->Add("Abriu a camera");
 	}
 
 	private: System::Void filenameToMat(System::String ^ nome, Mat dst) {
@@ -576,6 +669,7 @@ namespace AulasPDI {
 			TelaPrincipal::resoTool->Visible = true;
 			//TelaPrincipal::Width = imgFundo->Width; ajustar ao tamanho da imagem
 			//TelaPrincipal::Height = imgFundo->Height;
+			listHistórico->Items->Add("Abriu imagem: " + ofd1->FileName);
 		}
 		else {
 			System::Windows::Forms::MessageBox::Show("Operação cancelada");
@@ -586,41 +680,48 @@ namespace AulasPDI {
 		testeVideos->LerImg();
 		cvtColor(testeVideos->modificando, testeVideos->modificando, COLOR_BGR2XYZ);
 		TelaPrincipal::Converter();
+		listHistórico->Items->Add("Converteu para XYZ");
 	}
 
 	private: System::Void hSVToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		testeVideos->LerImg();
 		cvtColor(testeVideos->modificando, testeVideos->modificando, COLOR_BGR2HSV);
 		TelaPrincipal::Converter();
+		listHistórico->Items->Add("Converteu para HSV");
 	}
 
 	private: System::Void hSLToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		testeVideos->LerImg();
 		cvtColor(testeVideos->modificando, testeVideos->modificando, COLOR_BGR2HLS);
 		TelaPrincipal::Converter();
+		listHistórico->Items->Add("Converteu para HSL");
 	}
 
 	private: System::Void lUVToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		testeVideos->LerImg();
 		cvtColor(testeVideos->modificando, testeVideos->modificando, COLOR_BGR2Luv);
 		TelaPrincipal::Converter();
+		listHistórico->Items->Add("Converteu para LUV");
 	}
 
 	private: System::Void lABToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		testeVideos->LerImg();
 		cvtColor(testeVideos->modificando, testeVideos->modificando, COLOR_BGR2Lab);
 		TelaPrincipal::Converter();
+		listHistórico->Items->Add("Converteu para LAB");
 	}
 
 	private: System::Void yCRCBToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		testeVideos->LerImg();
 		cvtColor(testeVideos->modificando, testeVideos->modificando, COLOR_BGR2YCrCb);
 		TelaPrincipal::Converter();
+		listHistórico->Items->Add("Converteu para YCRCB");
 	}
 
 	private: System::Void grayscaleToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		testeVideos->LerImg();
 		cvtColor(testeVideos->modificando, testeVideos->modificando, COLOR_BGR2GRAY);
+		listHistórico->Items->Add("Converteu para Grayscale");
 
 		Mat canais[1];
 		split(testeVideos->modificando, canais);
@@ -646,6 +747,7 @@ namespace AulasPDI {
 		//testeVideos->modificando = testeVideos->modificando;
 		//imshow("Imagem", testeVideos->modificando);
 		testeVideos->TracksEFiltros("Imagem", 0);
+		listHistórico->Items->Add("Aplicou blur");
 		//imshow("Imagem", testeVideos->modificando);
 		//modificando = testeVideos->modificando;
 	}
@@ -655,6 +757,7 @@ namespace AulasPDI {
 		//testeVideos->modificando = testeVideos->modificando;
 		//imshow("Imagem", testeVideos->modificando);
 		testeVideos->TracksEFiltros("Imagem", 1);
+		listHistórico->Items->Add("Aplicou Gaussian blur");
 	}
 
 	private: System::Void btFB3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -662,6 +765,7 @@ namespace AulasPDI {
 		//testeVideos->modificando = testeVideos->modificando;
 		//imshow("Imagem", testeVideos->modificando);
 		testeVideos->TracksEFiltros("Imagem", 2);
+		listHistórico->Items->Add("Aplicou Median");
 	}
 
 	private: System::Void btFB4_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -669,25 +773,91 @@ namespace AulasPDI {
 		//testeVideos->modificando = testeVideos->modificando;
 		//imshow("Imagem", testeVideos->modificando);
 		testeVideos->TracksEFiltros("Imagem", 3);
+		listHistórico->Items->Add("Aplicou Bilateral filter");
 	}
 
 	private: System::Void btHistograma_Click(System::Object^ sender, System::EventArgs^ e) {
 		testeVideos->LerImg();
 		mostrarHistograma(testeVideos->modificando);
+		listHistórico->Items->Add("Vizualizou o histograma da imagem");
 	}
 
 	private: System::Void btReabrir_Click(System::Object^ sender, System::EventArgs^ e) {
 		testeVideos->LerImg();
-		imshow("Imagem", testeVideos->modificando);
+		//imshow("Imagem", testeVideos->modificando);
+		testeVideos->salvamostra(testeVideos->modificando,0);
+		listHistórico->Items->Add("Reabriu a janela");
 	}
 
 	private: System::Void btRestaurar_Click(System::Object^ sender, System::EventArgs^ e) {
 		testeVideos->modificando = original;
 		testeVideos->SalvarImg(testeVideos->modificando);
+		listHistórico->Items->Add("Restaurou a imagem para a original");
 	}
 
 	private: System::Void btLaplace_Click(System::Object^ sender, System::EventArgs^ e) {
 		testeVideos->passaAlta(1);
+		listHistórico->Items->Add("Aplicou Laplace");
+	}
+
+	private: System::Void btHistorico_Click(System::Object^ sender, System::EventArgs^ e) {
+		listHistórico->Visible = !listHistórico->Visible;
+		listHistórico->Items->Add("Vizualizou o histórico");
+	}
+
+	private: System::Void btAdicao_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (TelaPrincipal::ofd2->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			try {
+				testeVideos->algebrica = imread((char*)(void*)Marshal::StringToHGlobalAnsi(TelaPrincipal::ofd2->FileName));
+				//salvar na pasta do projeto
+				imwrite("Adicao.jpg", testeVideos->algebrica);
+				//Image^ imgAdicao = Image::FromFile(TelaPrincipal::ofd2->FileName);
+				listHistórico->Items->Add("Abriu imagem de adicao: " + ofd2->FileName);
+				Mat resultante;
+				testeVideos->LerImg();
+				addWeighted(testeVideos->modificando, 0.5, testeVideos->algebrica, 0.5, 0, resultante);
+				//imshow("Soma", resultante);
+				testeVideos->modificando = resultante;
+				testeVideos->salvamostra(testeVideos->modificando, 0);
+			}
+			catch (std::exception& ex) {
+				string excp = ex.what();
+				System::String^ texto = gcnew System::String(excp.c_str());
+				System::Windows::Forms::MessageBox::Show("As imagens devem ter a mesma dimensão para serem somadas");
+			}
+		}
+		else {
+			System::Windows::Forms::MessageBox::Show("Operação cancelada");
+		}
+	}
+
+	private: System::Void btSubtracao_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (TelaPrincipal::ofd2->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			try {
+				testeVideos->algebrica = imread((char*)(void*)Marshal::StringToHGlobalAnsi(TelaPrincipal::ofd2->FileName));
+				//salvar na pasta do projeto
+				imwrite("Subtracao.jpg", testeVideos->algebrica);
+				//Image^ imgAdicao = Image::FromFile(TelaPrincipal::ofd2->FileName);
+				listHistórico->Items->Add("Abriu imagem de subtracao: " + ofd2->FileName);
+				Mat resultante;
+				testeVideos->LerImg();
+				subtract(testeVideos->modificando, testeVideos->algebrica, resultante);
+				testeVideos->modificando = resultante;
+				//addWeighted(testeVideos->modificando, 0.5, testeVideos->algebrica, 0.5, 0, resultante);
+				//imshow("Subtracao", resultante);
+				testeVideos->salvamostra(testeVideos->modificando, 0);
+			}
+			catch (std::exception& ex) {
+				string excp = ex.what();
+				System::String^ texto = gcnew System::String(excp.c_str());
+				System::Windows::Forms::MessageBox::Show("As imagens devem ter a mesma dimensão para serem somadas");
+			}
+		}
+		else {
+			System::Windows::Forms::MessageBox::Show("Operação cancelada");
+		}
 	}
 };
 }

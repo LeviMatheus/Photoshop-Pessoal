@@ -447,12 +447,14 @@ namespace AulasPDI {
 			this->btMultiplicacao->Name = L"btMultiplicacao";
 			this->btMultiplicacao->Size = System::Drawing::Size(180, 22);
 			this->btMultiplicacao->Text = L"Multiplicação";
+			this->btMultiplicacao->Click += gcnew System::EventHandler(this, &TelaPrincipal::btMultiplicacao_Click);
 			// 
 			// btDivisao
 			// 
 			this->btDivisao->Name = L"btDivisao";
 			this->btDivisao->Size = System::Drawing::Size(180, 22);
 			this->btDivisao->Text = L"Divisão";
+			this->btDivisao->Click += gcnew System::EventHandler(this, &TelaPrincipal::btDivisao_Click);
 			// 
 			// toolStripSeparator1
 			// 
@@ -791,7 +793,8 @@ namespace AulasPDI {
 
 	private: System::Void btRestaurar_Click(System::Object^ sender, System::EventArgs^ e) {
 		testeVideos->modificando = original;
-		testeVideos->SalvarImg(testeVideos->modificando);
+		//testeVideos->SalvarImg(testeVideos->modificando);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Restaurou a imagem para a original");
 	}
 
@@ -839,7 +842,6 @@ namespace AulasPDI {
 				testeVideos->algebrica = imread((char*)(void*)Marshal::StringToHGlobalAnsi(TelaPrincipal::ofd2->FileName));
 				//salvar na pasta do projeto
 				imwrite("Subtracao.jpg", testeVideos->algebrica);
-				//Image^ imgAdicao = Image::FromFile(TelaPrincipal::ofd2->FileName);
 				listHistórico->Items->Add("Abriu imagem de subtracao: " + ofd2->FileName);
 				Mat resultante;
 				testeVideos->LerImg();
@@ -852,7 +854,57 @@ namespace AulasPDI {
 			catch (std::exception& ex) {
 				string excp = ex.what();
 				System::String^ texto = gcnew System::String(excp.c_str());
-				System::Windows::Forms::MessageBox::Show("As imagens devem ter a mesma dimensão para serem somadas");
+				System::Windows::Forms::MessageBox::Show("As imagens devem ter a mesma dimensão para serem subtraídas");
+			}
+		}
+		else {
+			System::Windows::Forms::MessageBox::Show("Operação cancelada");
+		}
+	}
+
+	private: System::Void btMultiplicacao_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (TelaPrincipal::ofd2->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			try {
+				testeVideos->algebrica = imread((char*)(void*)Marshal::StringToHGlobalAnsi(TelaPrincipal::ofd2->FileName));
+				//salvar na pasta do projeto
+				imwrite("Multiplicacao.jpg", testeVideos->algebrica);
+				listHistórico->Items->Add("Abriu imagem de multiplicacao: " + ofd2->FileName);
+				Mat resultante;
+				testeVideos->LerImg();
+				multiply(testeVideos->modificando, testeVideos->algebrica, resultante, 0.01);
+				testeVideos->modificando = resultante;
+				testeVideos->salvamostra(testeVideos->modificando, 0);
+			}
+			catch (std::exception& ex) {
+				string excp = ex.what();
+				System::String^ texto = gcnew System::String(excp.c_str());
+				System::Windows::Forms::MessageBox::Show("As imagens devem ter a mesma dimensão para serem multiplicadas");
+			}
+		}
+		else {
+			System::Windows::Forms::MessageBox::Show("Operação cancelada");
+		}
+	}
+
+	private: System::Void btDivisao_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (TelaPrincipal::ofd2->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			try {
+				testeVideos->algebrica = imread((char*)(void*)Marshal::StringToHGlobalAnsi(TelaPrincipal::ofd2->FileName));
+				//salvar na pasta do projeto
+				imwrite("Divisao.jpg", testeVideos->algebrica);
+				listHistórico->Items->Add("Abriu imagem de divisao: " + ofd2->FileName);
+				Mat resultante;
+				testeVideos->LerImg();
+				divide(testeVideos->modificando, testeVideos->algebrica, resultante, 1);
+				testeVideos->modificando = resultante;
+				testeVideos->salvamostra(testeVideos->modificando, 0);
+			}
+			catch (std::exception& ex) {
+				string excp = ex.what();
+				System::String^ texto = gcnew System::String(excp.c_str());
+				System::Windows::Forms::MessageBox::Show("As imagens devem ter a mesma dimensão para serem divididas");
 			}
 		}
 		else {

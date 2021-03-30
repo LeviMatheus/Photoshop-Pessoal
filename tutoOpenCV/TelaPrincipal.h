@@ -137,6 +137,10 @@ namespace AulasPDI {
 	private: System::Windows::Forms::ToolStripDropDownButton^ btBrilho;
 	private: System::Windows::Forms::ToolStripMenuItem^ btAumBrilho;
 	private: System::Windows::Forms::ToolStripMenuItem^ btDimBrilho;
+	private: System::Windows::Forms::ToolStripDropDownButton^ btContraste;
+	private: System::Windows::Forms::ToolStripMenuItem^ tbAumCon;
+	private: System::Windows::Forms::ToolStripMenuItem^ btDimCon;
+private: System::Windows::Forms::ToolStripButton^ btInvert;
 
 
 
@@ -212,6 +216,10 @@ namespace AulasPDI {
 			this->btBrilho = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->btAumBrilho = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btDimBrilho = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btContraste = (gcnew System::Windows::Forms::ToolStripDropDownButton());
+			this->tbAumCon = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btDimCon = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btInvert = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btFBlur = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->btFB1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btFB2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -286,16 +294,16 @@ namespace AulasPDI {
 			// toolBotoes
 			// 
 			this->toolBotoes->GripStyle = System::Windows::Forms::ToolStripGripStyle::Hidden;
-			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(12) {
+			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(14) {
 				this->btCamera, this->btImagem,
-					this->btCanais, this->btBrilho, this->btFBlur, this->btPassaAlta, this->btHistograma, this->btAlgebricas, this->toolStripSeparator1,
-					this->btReabrir, this->btRestaurar, this->btHistorico
+					this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btFBlur, this->btPassaAlta, this->btHistograma, this->btAlgebricas,
+					this->toolStripSeparator1, this->btReabrir, this->btRestaurar, this->btHistorico
 			});
 			this->toolBotoes->LayoutStyle = System::Windows::Forms::ToolStripLayoutStyle::Flow;
 			this->toolBotoes->Location = System::Drawing::Point(0, 0);
 			this->toolBotoes->Name = L"toolBotoes";
 			this->toolBotoes->RenderMode = System::Windows::Forms::ToolStripRenderMode::System;
-			this->toolBotoes->Size = System::Drawing::Size(784, 42);
+			this->toolBotoes->Size = System::Drawing::Size(784, 45);
 			this->toolBotoes->TabIndex = 2;
 			// 
 			// btCamera
@@ -334,49 +342,49 @@ namespace AulasPDI {
 			// xYZToolStripMenuItem
 			// 
 			this->xYZToolStripMenuItem->Name = L"xYZToolStripMenuItem";
-			this->xYZToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->xYZToolStripMenuItem->Size = System::Drawing::Size(124, 22);
 			this->xYZToolStripMenuItem->Text = L"XYZ";
 			this->xYZToolStripMenuItem->Click += gcnew System::EventHandler(this, &TelaPrincipal::xYZToolStripMenuItem_Click_1);
 			// 
 			// hSVToolStripMenuItem
 			// 
 			this->hSVToolStripMenuItem->Name = L"hSVToolStripMenuItem";
-			this->hSVToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->hSVToolStripMenuItem->Size = System::Drawing::Size(124, 22);
 			this->hSVToolStripMenuItem->Text = L"HSV";
 			this->hSVToolStripMenuItem->Click += gcnew System::EventHandler(this, &TelaPrincipal::hSVToolStripMenuItem_Click);
 			// 
 			// hSLToolStripMenuItem
 			// 
 			this->hSLToolStripMenuItem->Name = L"hSLToolStripMenuItem";
-			this->hSLToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->hSLToolStripMenuItem->Size = System::Drawing::Size(124, 22);
 			this->hSLToolStripMenuItem->Text = L"HSL";
 			this->hSLToolStripMenuItem->Click += gcnew System::EventHandler(this, &TelaPrincipal::hSLToolStripMenuItem_Click);
 			// 
 			// lUVToolStripMenuItem
 			// 
 			this->lUVToolStripMenuItem->Name = L"lUVToolStripMenuItem";
-			this->lUVToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->lUVToolStripMenuItem->Size = System::Drawing::Size(124, 22);
 			this->lUVToolStripMenuItem->Text = L"LUV";
 			this->lUVToolStripMenuItem->Click += gcnew System::EventHandler(this, &TelaPrincipal::lUVToolStripMenuItem_Click);
 			// 
 			// lABToolStripMenuItem
 			// 
 			this->lABToolStripMenuItem->Name = L"lABToolStripMenuItem";
-			this->lABToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->lABToolStripMenuItem->Size = System::Drawing::Size(124, 22);
 			this->lABToolStripMenuItem->Text = L"LAB";
 			this->lABToolStripMenuItem->Click += gcnew System::EventHandler(this, &TelaPrincipal::lABToolStripMenuItem_Click);
 			// 
 			// yCRCBToolStripMenuItem
 			// 
 			this->yCRCBToolStripMenuItem->Name = L"yCRCBToolStripMenuItem";
-			this->yCRCBToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->yCRCBToolStripMenuItem->Size = System::Drawing::Size(124, 22);
 			this->yCRCBToolStripMenuItem->Text = L"YCRCB";
 			this->yCRCBToolStripMenuItem->Click += gcnew System::EventHandler(this, &TelaPrincipal::yCRCBToolStripMenuItem_Click);
 			// 
 			// grayscaleToolStripMenuItem
 			// 
 			this->grayscaleToolStripMenuItem->Name = L"grayscaleToolStripMenuItem";
-			this->grayscaleToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->grayscaleToolStripMenuItem->Size = System::Drawing::Size(124, 22);
 			this->grayscaleToolStripMenuItem->Text = L"Grayscale";
 			this->grayscaleToolStripMenuItem->Click += gcnew System::EventHandler(this, &TelaPrincipal::grayscaleToolStripMenuItem_Click);
 			// 
@@ -396,16 +404,53 @@ namespace AulasPDI {
 			// btAumBrilho
 			// 
 			this->btAumBrilho->Name = L"btAumBrilho";
-			this->btAumBrilho->Size = System::Drawing::Size(180, 22);
+			this->btAumBrilho->Size = System::Drawing::Size(161, 22);
 			this->btAumBrilho->Text = L"Aumentar brilho";
 			this->btAumBrilho->Click += gcnew System::EventHandler(this, &TelaPrincipal::btAumBrilho_Click);
 			// 
 			// btDimBrilho
 			// 
 			this->btDimBrilho->Name = L"btDimBrilho";
-			this->btDimBrilho->Size = System::Drawing::Size(180, 22);
+			this->btDimBrilho->Size = System::Drawing::Size(161, 22);
 			this->btDimBrilho->Text = L"Diminuir brilho";
 			this->btDimBrilho->Click += gcnew System::EventHandler(this, &TelaPrincipal::btDimBrilho_Click);
+			// 
+			// btContraste
+			// 
+			this->btContraste->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->tbAumCon,
+					this->btDimCon
+			});
+			this->btContraste->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btContraste->Name = L"btContraste";
+			this->btContraste->Size = System::Drawing::Size(71, 19);
+			this->btContraste->Text = L"Contraste";
+			this->btContraste->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btContraste->ToolTipText = L"Alterar contraste da imagem";
+			// 
+			// tbAumCon
+			// 
+			this->tbAumCon->Name = L"tbAumCon";
+			this->tbAumCon->Size = System::Drawing::Size(179, 22);
+			this->tbAumCon->Text = L"Aumentar contraste";
+			this->tbAumCon->Click += gcnew System::EventHandler(this, &TelaPrincipal::tbAumCon_Click);
+			// 
+			// btDimCon
+			// 
+			this->btDimCon->Name = L"btDimCon";
+			this->btDimCon->Size = System::Drawing::Size(179, 22);
+			this->btDimCon->Text = L"Diminuir contraste";
+			this->btDimCon->Click += gcnew System::EventHandler(this, &TelaPrincipal::btDimCon_Click);
+			// 
+			// btInvert
+			// 
+			this->btInvert->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btInvert->Name = L"btInvert";
+			this->btInvert->Size = System::Drawing::Size(51, 19);
+			this->btInvert->Text = L"Inverter";
+			this->btInvert->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btInvert->ToolTipText = L"Inverter cores da imagem";
+			this->btInvert->Click += gcnew System::EventHandler(this, &TelaPrincipal::btInvert_Click);
 			// 
 			// btFBlur
 			// 
@@ -622,10 +667,10 @@ namespace AulasPDI {
 			this->listHistórico->Dock = System::Windows::Forms::DockStyle::Right;
 			this->listHistórico->FormattingEnabled = true;
 			this->listHistórico->HorizontalScrollbar = true;
-			this->listHistórico->Location = System::Drawing::Point(404, 42);
+			this->listHistórico->Location = System::Drawing::Point(404, 45);
 			this->listHistórico->Name = L"listHistórico";
 			this->listHistórico->ScrollAlwaysVisible = true;
-			this->listHistórico->Size = System::Drawing::Size(380, 495);
+			this->listHistórico->Size = System::Drawing::Size(380, 492);
 			this->listHistórico->TabIndex = 3;
 			this->listHistórico->Visible = false;
 			// 
@@ -694,6 +739,10 @@ namespace AulasPDI {
 		btAlgebricas->Image = Image::FromFile("icones/mathematic.png");
 		btBrilho->Text = "";
 		btBrilho->Image = Image::FromFile("icones/brilho.png");
+		btContraste->Text = "";
+		btContraste->Image = Image::FromFile("icones/contrast.png");
+		btInvert->Text = "";
+		btInvert->Image = Image::FromFile("icones/invert.png");
 
 		//Texto de boas vindas e dicas
 		/*System::Windows::Forms::MessageBox::Show("Bem vindo ao meu editor ! " +
@@ -1101,6 +1150,32 @@ namespace AulasPDI {
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		//testeVideos->LerImg();
 		listHistórico->Items->Add("Diminuiu 10 de brilho a imagem");
+	}
+
+	private: System::Void tbAumCon_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat cnt;
+		testeVideos->modificando.convertTo(cnt, -1, 1.1, 0);
+		testeVideos->modificando = cnt;
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		//testeVideos->LerImg();
+		listHistórico->Items->Add("Aumentou contraste da imagem");
+	}
+
+	private: System::Void btDimCon_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat cnt;
+		testeVideos->modificando.convertTo(cnt, -1, 0.9, 0);
+		testeVideos->modificando = cnt;
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		//testeVideos->LerImg();
+		listHistórico->Items->Add("Diminuiu contraste da imagem");
+	}
+
+	private: System::Void btInvert_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat invertida;
+		bitwise_not(testeVideos->modificando,invertida);
+		testeVideos->modificando = invertida;
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Inverteu imagem");
 	}
 };
 }

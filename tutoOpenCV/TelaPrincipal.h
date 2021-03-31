@@ -141,6 +141,36 @@ namespace AulasPDI {
 	private: System::Windows::Forms::ToolStripMenuItem^ tbAumCon;
 	private: System::Windows::Forms::ToolStripMenuItem^ btDimCon;
 private: System::Windows::Forms::ToolStripButton^ btInvert;
+private: System::Windows::Forms::ToolStripDropDownButton^ btLimiarizacao;
+private: System::Windows::Forms::ToolStripMenuItem^ thBinario;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem2;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem3;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem4;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem5;
+private: System::Windows::Forms::ToolStripMenuItem^ binárioInvertidoToolStripMenuItem;
+private: System::Windows::Forms::ToolStripMenuItem^ truncadoToolStripMenuItem;
+private: System::Windows::Forms::ToolStripMenuItem^ toZeroToolStripMenuItem;
+private: System::Windows::Forms::ToolStripMenuItem^ toZeroInvertidoToolStripMenuItem;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem6;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem7;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem8;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem9;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem10;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem11;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem12;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem13;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem14;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem15;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem16;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem17;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem18;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem19;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem20;
+private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem21;
+private: System::Windows::Forms::ToolStripMenuItem^ adaptiveToolStripMenuItem;
+
+
+
 
 
 
@@ -225,6 +255,33 @@ private: System::Windows::Forms::ToolStripButton^ btInvert;
 			this->btFB2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btFB3 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btFB4 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btLimiarizacao = (gcnew System::Windows::Forms::ToolStripDropDownButton());
+			this->thBinario = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem3 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem4 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem5 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->binárioInvertidoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem6 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem7 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem8 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem9 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->truncadoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem10 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem11 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem12 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem13 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toZeroToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem14 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem15 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem16 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem17 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toZeroInvertidoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem18 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem19 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem20 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem21 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->adaptiveToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btPassaAlta = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->btLaplace = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btHistograma = (gcnew System::Windows::Forms::ToolStripButton());
@@ -294,10 +351,10 @@ private: System::Windows::Forms::ToolStripButton^ btInvert;
 			// toolBotoes
 			// 
 			this->toolBotoes->GripStyle = System::Windows::Forms::ToolStripGripStyle::Hidden;
-			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(14) {
+			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(15) {
 				this->btCamera, this->btImagem,
-					this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btFBlur, this->btPassaAlta, this->btHistograma, this->btAlgebricas,
-					this->toolStripSeparator1, this->btReabrir, this->btRestaurar, this->btHistorico
+					this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btFBlur, this->btLimiarizacao, this->btPassaAlta, this->btHistograma,
+					this->btAlgebricas, this->toolStripSeparator1, this->btReabrir, this->btRestaurar, this->btHistorico
 			});
 			this->toolBotoes->LayoutStyle = System::Windows::Forms::ToolStripLayoutStyle::Flow;
 			this->toolBotoes->Location = System::Drawing::Point(0, 0);
@@ -493,20 +550,231 @@ private: System::Windows::Forms::ToolStripButton^ btInvert;
 			this->btFB4->Text = L"Bilateral";
 			this->btFB4->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB4_Click);
 			// 
+			// btLimiarizacao
+			// 
+			this->btLimiarizacao->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {
+				this->thBinario,
+					this->binárioInvertidoToolStripMenuItem, this->truncadoToolStripMenuItem, this->toZeroToolStripMenuItem, this->toZeroInvertidoToolStripMenuItem,
+					this->adaptiveToolStripMenuItem
+			});
+			this->btLimiarizacao->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btLimiarizacao->Name = L"btLimiarizacao";
+			this->btLimiarizacao->Size = System::Drawing::Size(86, 19);
+			this->btLimiarizacao->Text = L"Limiarização";
+			this->btLimiarizacao->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btLimiarizacao->ToolTipText = L"Limiarização";
+			// 
+			// thBinario
+			// 
+			this->thBinario->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+				this->toolStripMenuItem2,
+					this->toolStripMenuItem3, this->toolStripMenuItem4, this->toolStripMenuItem5
+			});
+			this->thBinario->Name = L"thBinario";
+			this->thBinario->Size = System::Drawing::Size(163, 22);
+			this->thBinario->Text = L"Binário";
+			// 
+			// toolStripMenuItem2
+			// 
+			this->toolStripMenuItem2->Name = L"toolStripMenuItem2";
+			this->toolStripMenuItem2->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem2->Text = L"50";
+			this->toolStripMenuItem2->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem2_Click);
+			// 
+			// toolStripMenuItem3
+			// 
+			this->toolStripMenuItem3->Name = L"toolStripMenuItem3";
+			this->toolStripMenuItem3->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem3->Text = L"100";
+			this->toolStripMenuItem3->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem3_Click);
+			// 
+			// toolStripMenuItem4
+			// 
+			this->toolStripMenuItem4->Name = L"toolStripMenuItem4";
+			this->toolStripMenuItem4->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem4->Text = L"150";
+			this->toolStripMenuItem4->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem4_Click);
+			// 
+			// toolStripMenuItem5
+			// 
+			this->toolStripMenuItem5->Name = L"toolStripMenuItem5";
+			this->toolStripMenuItem5->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem5->Text = L"200";
+			this->toolStripMenuItem5->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem5_Click);
+			// 
+			// binárioInvertidoToolStripMenuItem
+			// 
+			this->binárioInvertidoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+				this->toolStripMenuItem6,
+					this->toolStripMenuItem7, this->toolStripMenuItem8, this->toolStripMenuItem9
+			});
+			this->binárioInvertidoToolStripMenuItem->Name = L"binárioInvertidoToolStripMenuItem";
+			this->binárioInvertidoToolStripMenuItem->Size = System::Drawing::Size(163, 22);
+			this->binárioInvertidoToolStripMenuItem->Text = L"Binário invertido";
+			// 
+			// toolStripMenuItem6
+			// 
+			this->toolStripMenuItem6->Name = L"toolStripMenuItem6";
+			this->toolStripMenuItem6->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem6->Text = L"50";
+			this->toolStripMenuItem6->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem6_Click);
+			// 
+			// toolStripMenuItem7
+			// 
+			this->toolStripMenuItem7->Name = L"toolStripMenuItem7";
+			this->toolStripMenuItem7->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem7->Text = L"100";
+			this->toolStripMenuItem7->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem7_Click);
+			// 
+			// toolStripMenuItem8
+			// 
+			this->toolStripMenuItem8->Name = L"toolStripMenuItem8";
+			this->toolStripMenuItem8->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem8->Text = L"150";
+			this->toolStripMenuItem8->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem8_Click);
+			// 
+			// toolStripMenuItem9
+			// 
+			this->toolStripMenuItem9->Name = L"toolStripMenuItem9";
+			this->toolStripMenuItem9->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem9->Text = L"200";
+			this->toolStripMenuItem9->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem9_Click);
+			// 
+			// truncadoToolStripMenuItem
+			// 
+			this->truncadoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+				this->toolStripMenuItem10,
+					this->toolStripMenuItem11, this->toolStripMenuItem12, this->toolStripMenuItem13
+			});
+			this->truncadoToolStripMenuItem->Name = L"truncadoToolStripMenuItem";
+			this->truncadoToolStripMenuItem->Size = System::Drawing::Size(163, 22);
+			this->truncadoToolStripMenuItem->Text = L"Truncado";
+			// 
+			// toolStripMenuItem10
+			// 
+			this->toolStripMenuItem10->Name = L"toolStripMenuItem10";
+			this->toolStripMenuItem10->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem10->Text = L"50";
+			this->toolStripMenuItem10->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem10_Click);
+			// 
+			// toolStripMenuItem11
+			// 
+			this->toolStripMenuItem11->Name = L"toolStripMenuItem11";
+			this->toolStripMenuItem11->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem11->Text = L"100";
+			this->toolStripMenuItem11->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem11_Click);
+			// 
+			// toolStripMenuItem12
+			// 
+			this->toolStripMenuItem12->Name = L"toolStripMenuItem12";
+			this->toolStripMenuItem12->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem12->Text = L"150";
+			this->toolStripMenuItem12->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem12_Click);
+			// 
+			// toolStripMenuItem13
+			// 
+			this->toolStripMenuItem13->Name = L"toolStripMenuItem13";
+			this->toolStripMenuItem13->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem13->Text = L"200";
+			this->toolStripMenuItem13->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem13_Click);
+			// 
+			// toZeroToolStripMenuItem
+			// 
+			this->toZeroToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+				this->toolStripMenuItem14,
+					this->toolStripMenuItem15, this->toolStripMenuItem16, this->toolStripMenuItem17
+			});
+			this->toZeroToolStripMenuItem->Name = L"toZeroToolStripMenuItem";
+			this->toZeroToolStripMenuItem->Size = System::Drawing::Size(163, 22);
+			this->toZeroToolStripMenuItem->Text = L"To Zero";
+			// 
+			// toolStripMenuItem14
+			// 
+			this->toolStripMenuItem14->Name = L"toolStripMenuItem14";
+			this->toolStripMenuItem14->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem14->Text = L"50";
+			this->toolStripMenuItem14->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem14_Click);
+			// 
+			// toolStripMenuItem15
+			// 
+			this->toolStripMenuItem15->Name = L"toolStripMenuItem15";
+			this->toolStripMenuItem15->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem15->Text = L"100";
+			this->toolStripMenuItem15->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem15_Click);
+			// 
+			// toolStripMenuItem16
+			// 
+			this->toolStripMenuItem16->Name = L"toolStripMenuItem16";
+			this->toolStripMenuItem16->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem16->Text = L"150";
+			this->toolStripMenuItem16->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem16_Click);
+			// 
+			// toolStripMenuItem17
+			// 
+			this->toolStripMenuItem17->Name = L"toolStripMenuItem17";
+			this->toolStripMenuItem17->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem17->Text = L"200";
+			this->toolStripMenuItem17->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem17_Click);
+			// 
+			// toZeroInvertidoToolStripMenuItem
+			// 
+			this->toZeroInvertidoToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+				this->toolStripMenuItem18,
+					this->toolStripMenuItem19, this->toolStripMenuItem20, this->toolStripMenuItem21
+			});
+			this->toZeroInvertidoToolStripMenuItem->Name = L"toZeroInvertidoToolStripMenuItem";
+			this->toZeroInvertidoToolStripMenuItem->Size = System::Drawing::Size(163, 22);
+			this->toZeroInvertidoToolStripMenuItem->Text = L"To Zero invertido";
+			// 
+			// toolStripMenuItem18
+			// 
+			this->toolStripMenuItem18->Name = L"toolStripMenuItem18";
+			this->toolStripMenuItem18->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem18->Text = L"50";
+			this->toolStripMenuItem18->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem18_Click);
+			// 
+			// toolStripMenuItem19
+			// 
+			this->toolStripMenuItem19->Name = L"toolStripMenuItem19";
+			this->toolStripMenuItem19->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem19->Text = L"100";
+			this->toolStripMenuItem19->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem19_Click);
+			// 
+			// toolStripMenuItem20
+			// 
+			this->toolStripMenuItem20->Name = L"toolStripMenuItem20";
+			this->toolStripMenuItem20->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem20->Text = L"150";
+			this->toolStripMenuItem20->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem20_Click);
+			// 
+			// toolStripMenuItem21
+			// 
+			this->toolStripMenuItem21->Name = L"toolStripMenuItem21";
+			this->toolStripMenuItem21->Size = System::Drawing::Size(92, 22);
+			this->toolStripMenuItem21->Text = L"200";
+			this->toolStripMenuItem21->Click += gcnew System::EventHandler(this, &TelaPrincipal::toolStripMenuItem21_Click);
+			// 
+			// adaptiveToolStripMenuItem
+			// 
+			this->adaptiveToolStripMenuItem->Name = L"adaptiveToolStripMenuItem";
+			this->adaptiveToolStripMenuItem->Size = System::Drawing::Size(163, 22);
+			this->adaptiveToolStripMenuItem->Text = L"Adaptive";
+			this->adaptiveToolStripMenuItem->Click += gcnew System::EventHandler(this, &TelaPrincipal::adaptiveToolStripMenuItem_Click);
+			// 
 			// btPassaAlta
 			// 
 			this->btPassaAlta->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->btLaplace });
 			this->btPassaAlta->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->btPassaAlta->Name = L"btPassaAlta";
-			this->btPassaAlta->Size = System::Drawing::Size(71, 19);
-			this->btPassaAlta->Text = L"Passa alta";
+			this->btPassaAlta->Size = System::Drawing::Size(119, 19);
+			this->btPassaAlta->Text = L"Detecção de borda";
 			this->btPassaAlta->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
-			this->btPassaAlta->ToolTipText = L"Aplicar filtros de passa alta";
+			this->btPassaAlta->ToolTipText = L"Aplicar filtros de detecção de borda e passa alta";
 			// 
 			// btLaplace
 			// 
 			this->btLaplace->Name = L"btLaplace";
-			this->btLaplace->Size = System::Drawing::Size(114, 22);
+			this->btLaplace->Size = System::Drawing::Size(180, 22);
 			this->btLaplace->Text = L"Laplace";
 			this->btLaplace->Click += gcnew System::EventHandler(this, &TelaPrincipal::btLaplace_Click);
 			// 
@@ -743,6 +1011,10 @@ private: System::Windows::Forms::ToolStripButton^ btInvert;
 		btContraste->Image = Image::FromFile("icones/contrast.png");
 		btInvert->Text = "";
 		btInvert->Image = Image::FromFile("icones/invert.png");
+		btLimiarizacao->Text = "";
+		btLimiarizacao->Image = Image::FromFile("icones/threshold.png");
+		btPassaAlta->Text = "";
+		btPassaAlta->Image = Image::FromFile("icones/borderdetection.png");
 
 		//Texto de boas vindas e dicas
 		/*System::Windows::Forms::MessageBox::Show("Bem vindo ao meu editor ! " +
@@ -1176,6 +1448,174 @@ private: System::Windows::Forms::ToolStripButton^ btInvert;
 		testeVideos->modificando = invertida;
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Inverteu imagem");
+	}
+
+	private: System::Void toolStripMenuItem2_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 50, 255, 0);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 50 threshold binário na imagem");
+	}
+
+	private: System::Void toolStripMenuItem3_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 100, 255, 0);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 100 threshold binário na imagem");
+	}
+
+	private: System::Void toolStripMenuItem4_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 150, 255, 0);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 150 threshold binário na imagem");
+	}
+
+	private: System::Void toolStripMenuItem5_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 200, 255, 0);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 200 threshold binário na imagem");
+	}
+
+	private: System::Void toolStripMenuItem6_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 50, 255, 1);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 50 threshold binário invertido na imagem");
+	}
+
+	private: System::Void toolStripMenuItem7_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 100, 255, 1);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 100 threshold binário invertido na imagem");
+	}
+
+	private: System::Void toolStripMenuItem8_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 150, 255, 1);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 150 threshold binário invertido na imagem");
+	}
+
+	private: System::Void toolStripMenuItem9_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 200, 255, 1);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 200 threshold binário invertido na imagem");
+	}
+
+	private: System::Void toolStripMenuItem10_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 50, 255, 2);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 50 threshold truncado na imagem");
+	}
+
+	private: System::Void toolStripMenuItem11_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 100, 255, 2);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 100 threshold truncado na imagem");
+	}
+
+	private: System::Void toolStripMenuItem12_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 150, 255, 2);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 150 threshold truncado na imagem");
+	}
+
+	private: System::Void toolStripMenuItem13_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 200, 255, 2);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 200 threshold truncado na imagem");
+	}
+
+	private: System::Void toolStripMenuItem14_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 50, 255, 3);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 50 threshold To Zero na imagem");
+	}
+
+	private: System::Void toolStripMenuItem15_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 100, 255, 3);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 100 threshold To Zero na imagem");
+	}
+
+	private: System::Void toolStripMenuItem16_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 150, 255, 3);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 150 threshold To Zero na imagem");
+	}
+
+	private: System::Void toolStripMenuItem17_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 200, 255, 3);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 200 threshold To Zero na imagem");
+	}
+
+	private: System::Void adaptiveToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		adaptiveThreshold(src_gray, testeVideos->modificando, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY, 3+1*2, 0);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou adaptive threshold na imagem");
+	}
+
+	private: System::Void toolStripMenuItem21_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 200, 255, 4);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 200 threshold To Zero invertido na imagem");
+	}
+
+	private: System::Void toolStripMenuItem20_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 150, 255, 4);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 150 threshold To Zero invertido na imagem");
+	}
+
+	private: System::Void toolStripMenuItem19_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 100, 255, 4);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 100 threshold To Zero invertido na imagem");
+	}
+
+	private: System::Void toolStripMenuItem18_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat src_gray;
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
+		threshold(src_gray, testeVideos->modificando, 50, 255, 4);
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou 50 threshold To Zero invertido na imagem");
 	}
 };
 }

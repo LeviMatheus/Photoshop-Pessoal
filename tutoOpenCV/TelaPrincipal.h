@@ -1,5 +1,6 @@
 #pragma once
 #include <opencv2/opencv.hpp>
+//#include <opencv2/tracking.hpp>
 #include <opencv2/highgui.hpp>
 #include <windows.h>
 #include <string.h>
@@ -170,6 +171,9 @@ private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem21;
 private: System::Windows::Forms::ToolStripMenuItem^ adaptiveToolStripMenuItem;
 private: System::Windows::Forms::ToolStripMenuItem^ btCanny;
 private: System::Windows::Forms::ToolStripButton^ btMerge;
+private: System::Windows::Forms::ToolStripButton^ btROI;
+private: System::Windows::Forms::ToolStripButton^ btErosion;
+private: System::Windows::Forms::ToolStripButton^ btDilatar;
 
 
 
@@ -252,6 +256,10 @@ private: System::Windows::Forms::ToolStripButton^ btMerge;
 			this->tbAumCon = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btDimCon = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btInvert = (gcnew System::Windows::Forms::ToolStripButton());
+			this->btMerge = (gcnew System::Windows::Forms::ToolStripButton());
+			this->btROI = (gcnew System::Windows::Forms::ToolStripButton());
+			this->btErosion = (gcnew System::Windows::Forms::ToolStripButton());
+			this->btDilatar = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btFBlur = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->btFB1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btFB2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -308,13 +316,13 @@ private: System::Windows::Forms::ToolStripButton^ btMerge;
 			this->btHistorico = (gcnew System::Windows::Forms::ToolStripButton());
 			this->listHistórico = (gcnew System::Windows::Forms::ListBox());
 			this->ofd2 = (gcnew System::Windows::Forms::OpenFileDialog());
-			this->btMerge = (gcnew System::Windows::Forms::ToolStripButton());
 			this->menuStrip1->SuspendLayout();
 			this->toolBotoes->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
 			// 
+			this->menuStrip1->BackColor = System::Drawing::Color::Gainsboro;
 			this->menuStrip1->Dock = System::Windows::Forms::DockStyle::Bottom;
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->nomeTool, this->resoTool,
@@ -354,16 +362,18 @@ private: System::Windows::Forms::ToolStripButton^ btMerge;
 			// 
 			// toolBotoes
 			// 
+			this->toolBotoes->BackColor = System::Drawing::Color::Gainsboro;
 			this->toolBotoes->GripStyle = System::Windows::Forms::ToolStripGripStyle::Hidden;
-			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(16) {
+			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(19) {
 				this->btCamera, this->btImagem,
-					this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btMerge, this->btFBlur, this->btLimiarizacao, this->btPassaAlta,
-					this->btHistograma, this->btAlgebricas, this->toolStripSeparator1, this->btReabrir, this->btRestaurar, this->btHistorico
+					this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btMerge, this->btROI, this->btErosion, this->btDilatar,
+					this->btFBlur, this->btLimiarizacao, this->btPassaAlta, this->btHistograma, this->btAlgebricas, this->toolStripSeparator1, this->btReabrir,
+					this->btRestaurar, this->btHistorico
 			});
 			this->toolBotoes->LayoutStyle = System::Windows::Forms::ToolStripLayoutStyle::Flow;
 			this->toolBotoes->Location = System::Drawing::Point(0, 0);
 			this->toolBotoes->Name = L"toolBotoes";
-			this->toolBotoes->RenderMode = System::Windows::Forms::ToolStripRenderMode::System;
+			this->toolBotoes->RenderMode = System::Windows::Forms::ToolStripRenderMode::Professional;
 			this->toolBotoes->Size = System::Drawing::Size(784, 45);
 			this->toolBotoes->TabIndex = 2;
 			// 
@@ -513,6 +523,45 @@ private: System::Windows::Forms::ToolStripButton^ btMerge;
 			this->btInvert->ToolTipText = L"Inverter cores da imagem";
 			this->btInvert->Click += gcnew System::EventHandler(this, &TelaPrincipal::btInvert_Click);
 			// 
+			// btMerge
+			// 
+			this->btMerge->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btMerge->Name = L"btMerge";
+			this->btMerge->Size = System::Drawing::Size(45, 19);
+			this->btMerge->Text = L"Merge";
+			this->btMerge->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btMerge->ToolTipText = L"Unir canais de imagens";
+			this->btMerge->Click += gcnew System::EventHandler(this, &TelaPrincipal::btMerge_Click);
+			// 
+			// btROI
+			// 
+			this->btROI->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btROI->Name = L"btROI";
+			this->btROI->Size = System::Drawing::Size(30, 19);
+			this->btROI->Text = L"ROI";
+			this->btROI->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btROI->ToolTipText = L"Selecionar região de interesse na imagem";
+			this->btROI->Click += gcnew System::EventHandler(this, &TelaPrincipal::btROI_Click);
+			// 
+			// btErosion
+			// 
+			this->btErosion->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btErosion->Name = L"btErosion";
+			this->btErosion->Size = System::Drawing::Size(46, 19);
+			this->btErosion->Text = L"Erosão";
+			this->btErosion->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btErosion->ToolTipText = L"Erodir a imagem";
+			this->btErosion->Click += gcnew System::EventHandler(this, &TelaPrincipal::btErosion_Click);
+			// 
+			// btDilatar
+			// 
+			this->btDilatar->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btDilatar->Name = L"btDilatar";
+			this->btDilatar->Size = System::Drawing::Size(60, 19);
+			this->btDilatar->Text = L"Dilatação";
+			this->btDilatar->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btDilatar->ToolTipText = L"Dilatar a imagem";
+			// 
 			// btFBlur
 			// 
 			this->btFBlur->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
@@ -529,28 +578,28 @@ private: System::Windows::Forms::ToolStripButton^ btMerge;
 			// btFB1
 			// 
 			this->btFB1->Name = L"btFB1";
-			this->btFB1->Size = System::Drawing::Size(180, 22);
+			this->btFB1->Size = System::Drawing::Size(121, 22);
 			this->btFB1->Text = L"Blur";
 			this->btFB1->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB1_Click);
 			// 
 			// btFB2
 			// 
 			this->btFB2->Name = L"btFB2";
-			this->btFB2->Size = System::Drawing::Size(180, 22);
+			this->btFB2->Size = System::Drawing::Size(121, 22);
 			this->btFB2->Text = L"Gaussian";
 			this->btFB2->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB2_Click);
 			// 
 			// btFB3
 			// 
 			this->btFB3->Name = L"btFB3";
-			this->btFB3->Size = System::Drawing::Size(180, 22);
+			this->btFB3->Size = System::Drawing::Size(121, 22);
 			this->btFB3->Text = L"Median";
 			this->btFB3->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB3_Click);
 			// 
 			// btFB4
 			// 
 			this->btFB4->Name = L"btFB4";
-			this->btFB4->Size = System::Drawing::Size(180, 22);
+			this->btFB4->Size = System::Drawing::Size(121, 22);
 			this->btFB4->Text = L"Bilateral";
 			this->btFB4->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB4_Click);
 			// 
@@ -781,14 +830,14 @@ private: System::Windows::Forms::ToolStripButton^ btMerge;
 			// btLaplace
 			// 
 			this->btLaplace->Name = L"btLaplace";
-			this->btLaplace->Size = System::Drawing::Size(180, 22);
+			this->btLaplace->Size = System::Drawing::Size(114, 22);
 			this->btLaplace->Text = L"Laplace";
 			this->btLaplace->Click += gcnew System::EventHandler(this, &TelaPrincipal::btLaplace_Click);
 			// 
 			// btCanny
 			// 
 			this->btCanny->Name = L"btCanny";
-			this->btCanny->Size = System::Drawing::Size(180, 22);
+			this->btCanny->Size = System::Drawing::Size(114, 22);
 			this->btCanny->Text = L"Canny";
 			this->btCanny->Click += gcnew System::EventHandler(this, &TelaPrincipal::btCanny_Click);
 			// 
@@ -961,21 +1010,11 @@ private: System::Windows::Forms::ToolStripButton^ btMerge;
 			this->ofd2->FileName = L"openFileDialog2";
 			this->ofd2->Filter = L"Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
 			// 
-			// btMerge
-			// 
-			this->btMerge->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->btMerge->Name = L"btMerge";
-			this->btMerge->Size = System::Drawing::Size(45, 19);
-			this->btMerge->Text = L"Merge";
-			this->btMerge->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
-			this->btMerge->ToolTipText = L"Unir canais de imagens";
-			this->btMerge->Click += gcnew System::EventHandler(this, &TelaPrincipal::btMerge_Click);
-			// 
 			// TelaPrincipal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::White;
+			this->BackColor = System::Drawing::Color::Gainsboro;
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(784, 561);
 			this->Controls->Add(this->listHistórico);
@@ -1041,6 +1080,12 @@ private: System::Windows::Forms::ToolStripButton^ btMerge;
 		btPassaAlta->Image = Image::FromFile("icones/borderdetection.png");
 		btMerge->Text = "";
 		btMerge->Image = Image::FromFile("icones/merge.png");
+		btROI->Text = "";
+		btROI->Image = Image::FromFile("icones/roi.png");
+		btErosion->Text = "";
+		btErosion->Image = Image::FromFile("icones/erosion.png");
+		btDilatar->Text = "";
+		btDilatar->Image = Image::FromFile("icones/dilation.png");
 
 		//Texto de boas vindas e dicas
 		/*System::Windows::Forms::MessageBox::Show("Bem vindo ao meu editor ! " +
@@ -1279,8 +1324,9 @@ private: System::Windows::Forms::ToolStripButton^ btMerge;
 	}
 
 	private: System::Void btHistorico_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (listHistórico->Visible == false)
+			listHistórico->Items->Add("Vizualizou o histórico");
 		listHistórico->Visible = !listHistórico->Visible;
-		listHistórico->Items->Add("Vizualizou o histórico");
 	}
 
 	private: System::Void adicao(float p1, float p2) {
@@ -1690,5 +1736,21 @@ private: System::Windows::Forms::ToolStripButton^ btMerge;
 		else
 			System::Windows::Forms::MessageBox::Show("Operação cancelada");
 	}
+
+	private: System::Void btROI_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat selecao = testeVideos->modificando;
+		Rect rct = selectROI("Imagem", selecao, false, false);
+		//Rect a = Rect(rct.x, rct.y, rct.width, rct.height);
+		//Mat teste = Mat(testeVideos->modificando, rct); 
+		imwrite("Imagem.jpg", testeVideos->modificando(rct));
+		testeVideos->LerImg();
+		testeVideos->MostrarImg(testeVideos->modificando);
+		listHistórico->Items->Add("Selecionou uma região de interesse, tamanho: X:"+rct.width.ToString()+" Y:"+rct.height.ToString());
+	}
+
+	private: System::Void btErosion_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat result;
+		//erode(testeVideos->modificando,result,cv_eleme);
+	} 
 };
 }

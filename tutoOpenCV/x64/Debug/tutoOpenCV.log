@@ -1,13 +1,13 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(519,5): warning MSB8028: O diretório intermediário (x64\Debug\) contém arquivos compartilhados de outro projeto (tutoOpenCV.vcxproj). Isso pode levar a um comportamento incorreto de limpeza e recompilação.
   TelaPrincipal.cpp
-C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1365,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
-C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1370,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
-C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1375,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
-C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1380,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
-C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1390,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
-C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1395,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
-C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1400,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
-C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1405,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
+C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1391,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
+C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1396,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
+C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1401,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
+C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1406,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
+C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1416,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
+C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1421,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
+C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1426,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
+C:\Users\Gamer - PC\Documents\PDI\AulasPDI\tutoOpenCV\TelaPrincipal.h(1431,1): warning C4305: 'argumento': truncamento de 'double' para 'float'
 C:\opencv\build\include\opencv2\core\cvstd.hpp(575): warning C4793: 'cv::String::String': função compilada como nativa:
   	Encontrado um intrínseco não suportado em código gerenciado
 C:\opencv\build\include\opencv2\core\cuda.inl.hpp(105): warning C4793: 'cv::cuda::GpuMat::GpuMat': função compilada como nativa:

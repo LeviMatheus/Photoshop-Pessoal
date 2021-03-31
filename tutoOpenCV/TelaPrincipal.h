@@ -168,6 +168,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem19;
 private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem20;
 private: System::Windows::Forms::ToolStripMenuItem^ toolStripMenuItem21;
 private: System::Windows::Forms::ToolStripMenuItem^ adaptiveToolStripMenuItem;
+private: System::Windows::Forms::ToolStripMenuItem^ btCanny;
+private: System::Windows::Forms::ToolStripButton^ btMerge;
 
 
 
@@ -284,6 +286,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ adaptiveToolStripMenuItem;
 			this->adaptiveToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btPassaAlta = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->btLaplace = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btCanny = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btHistograma = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btAlgebricas = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->btAdicao = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -305,6 +308,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ adaptiveToolStripMenuItem;
 			this->btHistorico = (gcnew System::Windows::Forms::ToolStripButton());
 			this->listHistórico = (gcnew System::Windows::Forms::ListBox());
 			this->ofd2 = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->btMerge = (gcnew System::Windows::Forms::ToolStripButton());
 			this->menuStrip1->SuspendLayout();
 			this->toolBotoes->SuspendLayout();
 			this->SuspendLayout();
@@ -351,10 +355,10 @@ private: System::Windows::Forms::ToolStripMenuItem^ adaptiveToolStripMenuItem;
 			// toolBotoes
 			// 
 			this->toolBotoes->GripStyle = System::Windows::Forms::ToolStripGripStyle::Hidden;
-			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(15) {
+			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(16) {
 				this->btCamera, this->btImagem,
-					this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btFBlur, this->btLimiarizacao, this->btPassaAlta, this->btHistograma,
-					this->btAlgebricas, this->toolStripSeparator1, this->btReabrir, this->btRestaurar, this->btHistorico
+					this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btMerge, this->btFBlur, this->btLimiarizacao, this->btPassaAlta,
+					this->btHistograma, this->btAlgebricas, this->toolStripSeparator1, this->btReabrir, this->btRestaurar, this->btHistorico
 			});
 			this->toolBotoes->LayoutStyle = System::Windows::Forms::ToolStripLayoutStyle::Flow;
 			this->toolBotoes->Location = System::Drawing::Point(0, 0);
@@ -525,28 +529,28 @@ private: System::Windows::Forms::ToolStripMenuItem^ adaptiveToolStripMenuItem;
 			// btFB1
 			// 
 			this->btFB1->Name = L"btFB1";
-			this->btFB1->Size = System::Drawing::Size(121, 22);
+			this->btFB1->Size = System::Drawing::Size(180, 22);
 			this->btFB1->Text = L"Blur";
 			this->btFB1->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB1_Click);
 			// 
 			// btFB2
 			// 
 			this->btFB2->Name = L"btFB2";
-			this->btFB2->Size = System::Drawing::Size(121, 22);
+			this->btFB2->Size = System::Drawing::Size(180, 22);
 			this->btFB2->Text = L"Gaussian";
 			this->btFB2->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB2_Click);
 			// 
 			// btFB3
 			// 
 			this->btFB3->Name = L"btFB3";
-			this->btFB3->Size = System::Drawing::Size(121, 22);
+			this->btFB3->Size = System::Drawing::Size(180, 22);
 			this->btFB3->Text = L"Median";
 			this->btFB3->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB3_Click);
 			// 
 			// btFB4
 			// 
 			this->btFB4->Name = L"btFB4";
-			this->btFB4->Size = System::Drawing::Size(121, 22);
+			this->btFB4->Size = System::Drawing::Size(180, 22);
 			this->btFB4->Text = L"Bilateral";
 			this->btFB4->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB4_Click);
 			// 
@@ -763,7 +767,10 @@ private: System::Windows::Forms::ToolStripMenuItem^ adaptiveToolStripMenuItem;
 			// 
 			// btPassaAlta
 			// 
-			this->btPassaAlta->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->btLaplace });
+			this->btPassaAlta->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->btLaplace,
+					this->btCanny
+			});
 			this->btPassaAlta->ImageTransparentColor = System::Drawing::Color::Magenta;
 			this->btPassaAlta->Name = L"btPassaAlta";
 			this->btPassaAlta->Size = System::Drawing::Size(119, 19);
@@ -777,6 +784,13 @@ private: System::Windows::Forms::ToolStripMenuItem^ adaptiveToolStripMenuItem;
 			this->btLaplace->Size = System::Drawing::Size(180, 22);
 			this->btLaplace->Text = L"Laplace";
 			this->btLaplace->Click += gcnew System::EventHandler(this, &TelaPrincipal::btLaplace_Click);
+			// 
+			// btCanny
+			// 
+			this->btCanny->Name = L"btCanny";
+			this->btCanny->Size = System::Drawing::Size(180, 22);
+			this->btCanny->Text = L"Canny";
+			this->btCanny->Click += gcnew System::EventHandler(this, &TelaPrincipal::btCanny_Click);
 			// 
 			// btHistograma
 			// 
@@ -947,6 +961,16 @@ private: System::Windows::Forms::ToolStripMenuItem^ adaptiveToolStripMenuItem;
 			this->ofd2->FileName = L"openFileDialog2";
 			this->ofd2->Filter = L"Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
 			// 
+			// btMerge
+			// 
+			this->btMerge->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btMerge->Name = L"btMerge";
+			this->btMerge->Size = System::Drawing::Size(45, 19);
+			this->btMerge->Text = L"Merge";
+			this->btMerge->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btMerge->ToolTipText = L"Unir canais de imagens";
+			this->btMerge->Click += gcnew System::EventHandler(this, &TelaPrincipal::btMerge_Click);
+			// 
 			// TelaPrincipal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1015,6 +1039,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ adaptiveToolStripMenuItem;
 		btLimiarizacao->Image = Image::FromFile("icones/threshold.png");
 		btPassaAlta->Text = "";
 		btPassaAlta->Image = Image::FromFile("icones/borderdetection.png");
+		btMerge->Text = "";
+		btMerge->Image = Image::FromFile("icones/merge.png");
 
 		//Texto de boas vindas e dicas
 		/*System::Windows::Forms::MessageBox::Show("Bem vindo ao meu editor ! " +
@@ -1616,6 +1642,53 @@ private: System::Windows::Forms::ToolStripMenuItem^ adaptiveToolStripMenuItem;
 		threshold(src_gray, testeVideos->modificando, 50, 255, 4);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 50 threshold To Zero invertido na imagem");
+	}
+
+	private: System::Void btCanny_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat canny;
+		Canny(testeVideos->modificando, canny, 50, 150, 3);
+		testeVideos->modificando = canny;
+		testeVideos->salvamostra(testeVideos->modificando, 0);
+		listHistórico->Items->Add("Aplicou detecção de borda Canny na imagem");
+		/*testeVideos->LerImg();
+		testeVideos->MostrarImg(testeVideos->modificando);*/
+	}
+
+	private: System::Void btMerge_Click(System::Object^ sender, System::EventArgs^ e) {
+		vector <Mat> canais(3);
+		Mat junta;
+		//cvtColor(testeVideos->modificando, canais[0], COLOR_BGR2GRAY);
+		/*canais[0] = imread("Img-Canal0.png", CV_LOAD_IMAGE_GRAYSCALE);
+		canais[1] = imread("Img-Canal1.png", CV_LOAD_IMAGE_GRAYSCALE);
+		canais[2] = imread("Img-Canal2.png", CV_LOAD_IMAGE_GRAYSCALE);*/
+		OpenFileDialog^ fileCanal1 = gcnew OpenFileDialog;
+		OpenFileDialog^ fileCanal2 = gcnew OpenFileDialog;
+		OpenFileDialog^ fileCanal3 = gcnew OpenFileDialog;
+		fileCanal1->Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
+		fileCanal2->Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
+		fileCanal3->Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
+
+		if(fileCanal1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			if(fileCanal2->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+				if (fileCanal3->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+					testeVideos->modificando = imread((char*)(void*)Marshal::StringToHGlobalAnsi(fileCanal1->FileName));
+					cvtColor(testeVideos->modificando, canais[0], COLOR_BGR2GRAY);
+					testeVideos->modificando = imread((char*)(void*)Marshal::StringToHGlobalAnsi(fileCanal2->FileName));
+					cvtColor(testeVideos->modificando, canais[1], COLOR_BGR2GRAY);
+					testeVideos->modificando = imread((char*)(void*)Marshal::StringToHGlobalAnsi(fileCanal3->FileName));
+					cvtColor(testeVideos->modificando, canais[2], COLOR_BGR2GRAY);
+					merge(canais, junta);
+					testeVideos->modificando = junta;
+					testeVideos->salvamostra(testeVideos->modificando, 0);
+					listHistórico->Items->Add("Uniu 3 canais a uma imagem, Arquivo 1: " + fileCanal1->FileName
+						+ "Arquivo 2: " + fileCanal2->FileName
+						+ "Arquivo 3: " + fileCanal3->FileName);
+				}else
+					System::Windows::Forms::MessageBox::Show("Operação cancelada");
+			else
+				System::Windows::Forms::MessageBox::Show("Operação cancelada");
+		else
+			System::Windows::Forms::MessageBox::Show("Operação cancelada");
 	}
 };
 }

@@ -2,6 +2,7 @@
 #include <opencv2/opencv.hpp>
 //#include <opencv2/tracking.hpp>
 #include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
 #include <windows.h>
 #include <string.h>
 #include <iostream>
@@ -174,6 +175,7 @@ private: System::Windows::Forms::ToolStripButton^ btMerge;
 private: System::Windows::Forms::ToolStripButton^ btROI;
 private: System::Windows::Forms::ToolStripButton^ btErosion;
 private: System::Windows::Forms::ToolStripButton^ btDilatar;
+private: System::Windows::Forms::ToolStripButton^ btGradMorf;
 
 
 
@@ -316,6 +318,7 @@ private: System::Windows::Forms::ToolStripButton^ btDilatar;
 			this->btHistorico = (gcnew System::Windows::Forms::ToolStripButton());
 			this->listHistórico = (gcnew System::Windows::Forms::ListBox());
 			this->ofd2 = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->btGradMorf = (gcnew System::Windows::Forms::ToolStripButton());
 			this->menuStrip1->SuspendLayout();
 			this->toolBotoes->SuspendLayout();
 			this->SuspendLayout();
@@ -364,11 +367,11 @@ private: System::Windows::Forms::ToolStripButton^ btDilatar;
 			// 
 			this->toolBotoes->BackColor = System::Drawing::Color::Gainsboro;
 			this->toolBotoes->GripStyle = System::Windows::Forms::ToolStripGripStyle::Hidden;
-			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(19) {
+			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(20) {
 				this->btCamera, this->btImagem,
 					this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btMerge, this->btROI, this->btErosion, this->btDilatar,
-					this->btFBlur, this->btLimiarizacao, this->btPassaAlta, this->btHistograma, this->btAlgebricas, this->toolStripSeparator1, this->btReabrir,
-					this->btRestaurar, this->btHistorico
+					this->btGradMorf, this->btFBlur, this->btLimiarizacao, this->btPassaAlta, this->btHistograma, this->btAlgebricas, this->toolStripSeparator1,
+					this->btReabrir, this->btRestaurar, this->btHistorico
 			});
 			this->toolBotoes->LayoutStyle = System::Windows::Forms::ToolStripLayoutStyle::Flow;
 			this->toolBotoes->Location = System::Drawing::Point(0, 0);
@@ -561,6 +564,7 @@ private: System::Windows::Forms::ToolStripButton^ btDilatar;
 			this->btDilatar->Text = L"Dilatação";
 			this->btDilatar->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
 			this->btDilatar->ToolTipText = L"Dilatar a imagem";
+			this->btDilatar->Click += gcnew System::EventHandler(this, &TelaPrincipal::btDilatar_Click);
 			// 
 			// btFBlur
 			// 
@@ -578,28 +582,28 @@ private: System::Windows::Forms::ToolStripButton^ btDilatar;
 			// btFB1
 			// 
 			this->btFB1->Name = L"btFB1";
-			this->btFB1->Size = System::Drawing::Size(121, 22);
+			this->btFB1->Size = System::Drawing::Size(180, 22);
 			this->btFB1->Text = L"Blur";
 			this->btFB1->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB1_Click);
 			// 
 			// btFB2
 			// 
 			this->btFB2->Name = L"btFB2";
-			this->btFB2->Size = System::Drawing::Size(121, 22);
+			this->btFB2->Size = System::Drawing::Size(180, 22);
 			this->btFB2->Text = L"Gaussian";
 			this->btFB2->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB2_Click);
 			// 
 			// btFB3
 			// 
 			this->btFB3->Name = L"btFB3";
-			this->btFB3->Size = System::Drawing::Size(121, 22);
+			this->btFB3->Size = System::Drawing::Size(180, 22);
 			this->btFB3->Text = L"Median";
 			this->btFB3->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB3_Click);
 			// 
 			// btFB4
 			// 
 			this->btFB4->Name = L"btFB4";
-			this->btFB4->Size = System::Drawing::Size(121, 22);
+			this->btFB4->Size = System::Drawing::Size(180, 22);
 			this->btFB4->Text = L"Bilateral";
 			this->btFB4->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB4_Click);
 			// 
@@ -1010,6 +1014,16 @@ private: System::Windows::Forms::ToolStripButton^ btDilatar;
 			this->ofd2->FileName = L"openFileDialog2";
 			this->ofd2->Filter = L"Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
 			// 
+			// btGradMorf
+			// 
+			this->btGradMorf->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btGradMorf->Name = L"btGradMorf";
+			this->btGradMorf->Size = System::Drawing::Size(131, 19);
+			this->btGradMorf->Text = L"Gradiente Morfológico";
+			this->btGradMorf->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btGradMorf->ToolTipText = L"Aplicar gradiente morfológico";
+			this->btGradMorf->Click += gcnew System::EventHandler(this, &TelaPrincipal::btGradMorf_Click);
+			// 
 			// TelaPrincipal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1086,6 +1100,8 @@ private: System::Windows::Forms::ToolStripButton^ btDilatar;
 		btErosion->Image = Image::FromFile("icones/erosion.png");
 		btDilatar->Text = "";
 		btDilatar->Image = Image::FromFile("icones/dilation.png");
+		btGradMorf->Text = "";
+		btGradMorf->Image = Image::FromFile("icones/gradientmorph.png");
 
 		//Texto de boas vindas e dicas
 		/*System::Windows::Forms::MessageBox::Show("Bem vindo ao meu editor ! " +
@@ -1749,8 +1765,58 @@ private: System::Windows::Forms::ToolStripButton^ btDilatar;
 	}
 
 	private: System::Void btErosion_Click(System::Object^ sender, System::EventArgs^ e) {
-		Mat result;
-		//erode(testeVideos->modificando,result,cv_eleme);
+		try {
+			Mat result;
+			//Mat m = Mat::ones(2, 2, CV_8U);
+			Mat m = getStructuringElement(MORPH_ELLIPSE, cv::Size(2, 2), cv::Point(-1, 1));
+			Mat backup = testeVideos->modificando;
+			erode(testeVideos->modificando, result, m, cv::Point(-1, 1), 1);
+			testeVideos->modificando = result;
+			testeVideos->salvamostra(testeVideos->modificando, 0);
+			listHistórico->Items->Add("Erodiu a imagem");
+			Mat diffE = backup - testeVideos->modificando;
+			imshow("diff", diffE);
+			imwrite("diff-erosao.png", diffE);
+		}
+		catch (std::exception& ex) {
+			string excp = ex.what();
+			System::String^ texto = gcnew System::String(excp.c_str());
+			System::Windows::Forms::MessageBox::Show("Erro: " + texto);
+		}
 	} 
+
+	private: System::Void btDilatar_Click(System::Object^ sender, System::EventArgs^ e) {
+		try {
+			Mat result;
+			//Mat m = Mat::ones(2, 2, CV_8U);
+			Mat m = getStructuringElement(MORPH_ELLIPSE, cv::Size(2, 2), cv::Point(-1, 1));
+			Mat backup = testeVideos->modificando;
+			dilate(testeVideos->modificando, result, m, cv::Point(-1, 1), 1);
+			testeVideos->modificando = result;
+			testeVideos->salvamostra(testeVideos->modificando, 0);
+			listHistórico->Items->Add("Dilatou a imagem");
+			Mat diffD = testeVideos->modificando - backup;
+			imshow("diff", diffD);
+			imwrite("diff-dilatacao.png", diffD);
+		}
+		catch (std::exception& ex) {
+			string excp = ex.what();
+			System::String^ texto = gcnew System::String(excp.c_str());
+			System::Windows::Forms::MessageBox::Show("Erro: " + texto);
+		}
+	}
+
+	private: System::Void btGradMorf_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat resultErode,resultDila,resultSub;
+		Mat m = getStructuringElement(MORPH_ELLIPSE, cv::Size(2, 2), cv::Point(-1, 1));
+		Mat backup = testeVideos->modificando;
+		erode(testeVideos->modificando, resultErode, m, cv::Point(-1, 1), 1);//erodir original
+		Mat diffE = resultErode - backup;
+		dilate(backup, resultDila, m, cv::Point(-1, 1), 1);//dilatar original
+		resultSub = resultDila - backup;//subtracao
+		imshow("Imagem", resultSub);
+		testeVideos->modificando = resultSub;
+		//testeVideos->LerImg();
+	}
 };
 }

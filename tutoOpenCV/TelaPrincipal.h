@@ -175,7 +175,17 @@ private: System::Windows::Forms::ToolStripButton^ btMerge;
 private: System::Windows::Forms::ToolStripButton^ btROI;
 private: System::Windows::Forms::ToolStripButton^ btErosion;
 private: System::Windows::Forms::ToolStripButton^ btDilatar;
-private: System::Windows::Forms::ToolStripButton^ btGradMorf;
+private: System::Windows::Forms::ToolStripDropDownButton^ btMorfologicas;
+private: System::Windows::Forms::ToolStripMenuItem^ btOpening;
+private: System::Windows::Forms::ToolStripMenuItem^ btClosing;
+private: System::Windows::Forms::ToolStripMenuItem^ btGrandienteMorf;
+private: System::Windows::Forms::ToolStripMenuItem^ btTopHat;
+private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
+
+
+
+
+
 
 
 
@@ -297,6 +307,12 @@ private: System::Windows::Forms::ToolStripButton^ btGradMorf;
 			this->btPassaAlta = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->btLaplace = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btCanny = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btMorfologicas = (gcnew System::Windows::Forms::ToolStripDropDownButton());
+			this->btOpening = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btClosing = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btGrandienteMorf = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btTopHat = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btBlackHat = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btHistograma = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btAlgebricas = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->btAdicao = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -318,7 +334,6 @@ private: System::Windows::Forms::ToolStripButton^ btGradMorf;
 			this->btHistorico = (gcnew System::Windows::Forms::ToolStripButton());
 			this->listHistórico = (gcnew System::Windows::Forms::ListBox());
 			this->ofd2 = (gcnew System::Windows::Forms::OpenFileDialog());
-			this->btGradMorf = (gcnew System::Windows::Forms::ToolStripButton());
 			this->menuStrip1->SuspendLayout();
 			this->toolBotoes->SuspendLayout();
 			this->SuspendLayout();
@@ -370,7 +385,7 @@ private: System::Windows::Forms::ToolStripButton^ btGradMorf;
 			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(20) {
 				this->btCamera, this->btImagem,
 					this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btMerge, this->btROI, this->btErosion, this->btDilatar,
-					this->btGradMorf, this->btFBlur, this->btLimiarizacao, this->btPassaAlta, this->btHistograma, this->btAlgebricas, this->toolStripSeparator1,
+					this->btFBlur, this->btLimiarizacao, this->btPassaAlta, this->btMorfologicas, this->btHistograma, this->btAlgebricas, this->toolStripSeparator1,
 					this->btReabrir, this->btRestaurar, this->btHistorico
 			});
 			this->toolBotoes->LayoutStyle = System::Windows::Forms::ToolStripLayoutStyle::Flow;
@@ -582,28 +597,28 @@ private: System::Windows::Forms::ToolStripButton^ btGradMorf;
 			// btFB1
 			// 
 			this->btFB1->Name = L"btFB1";
-			this->btFB1->Size = System::Drawing::Size(180, 22);
+			this->btFB1->Size = System::Drawing::Size(121, 22);
 			this->btFB1->Text = L"Blur";
 			this->btFB1->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB1_Click);
 			// 
 			// btFB2
 			// 
 			this->btFB2->Name = L"btFB2";
-			this->btFB2->Size = System::Drawing::Size(180, 22);
+			this->btFB2->Size = System::Drawing::Size(121, 22);
 			this->btFB2->Text = L"Gaussian";
 			this->btFB2->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB2_Click);
 			// 
 			// btFB3
 			// 
 			this->btFB3->Name = L"btFB3";
-			this->btFB3->Size = System::Drawing::Size(180, 22);
+			this->btFB3->Size = System::Drawing::Size(121, 22);
 			this->btFB3->Text = L"Median";
 			this->btFB3->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB3_Click);
 			// 
 			// btFB4
 			// 
 			this->btFB4->Name = L"btFB4";
-			this->btFB4->Size = System::Drawing::Size(180, 22);
+			this->btFB4->Size = System::Drawing::Size(121, 22);
 			this->btFB4->Text = L"Bilateral";
 			this->btFB4->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFB4_Click);
 			// 
@@ -845,6 +860,56 @@ private: System::Windows::Forms::ToolStripButton^ btGradMorf;
 			this->btCanny->Text = L"Canny";
 			this->btCanny->Click += gcnew System::EventHandler(this, &TelaPrincipal::btCanny_Click);
 			// 
+			// btMorfologicas
+			// 
+			this->btMorfologicas->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
+				this->btOpening,
+					this->btClosing, this->btGrandienteMorf, this->btTopHat, this->btBlackHat
+			});
+			this->btMorfologicas->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btMorfologicas->Name = L"btMorfologicas";
+			this->btMorfologicas->Size = System::Drawing::Size(149, 19);
+			this->btMorfologicas->Text = L"Operações morfológicas";
+			this->btMorfologicas->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btMorfologicas->ToolTipText = L"Aplicar operações morfológicas";
+			// 
+			// btOpening
+			// 
+			this->btOpening->Name = L"btOpening";
+			this->btOpening->Size = System::Drawing::Size(194, 22);
+			this->btOpening->Text = L"Opening";
+			this->btOpening->Click += gcnew System::EventHandler(this, &TelaPrincipal::btOpening_Click);
+			// 
+			// btClosing
+			// 
+			this->btClosing->Name = L"btClosing";
+			this->btClosing->Size = System::Drawing::Size(194, 22);
+			this->btClosing->Text = L"Closing";
+			this->btClosing->Click += gcnew System::EventHandler(this, &TelaPrincipal::btClosing_Click);
+			// 
+			// btGrandienteMorf
+			// 
+			this->btGrandienteMorf->Name = L"btGrandienteMorf";
+			this->btGrandienteMorf->Size = System::Drawing::Size(194, 22);
+			this->btGrandienteMorf->Text = L"Gradiente Morfológico";
+			this->btGrandienteMorf->Click += gcnew System::EventHandler(this, &TelaPrincipal::btGrandienteMorf_Click);
+			// 
+			// btTopHat
+			// 
+			this->btTopHat->Name = L"btTopHat";
+			this->btTopHat->Size = System::Drawing::Size(194, 22);
+			this->btTopHat->Text = L"Top-hat";
+			this->btTopHat->ToolTipText = L"Aplicar Top-hat (original-aberta)";
+			this->btTopHat->Click += gcnew System::EventHandler(this, &TelaPrincipal::btTopHat_Click);
+			// 
+			// btBlackHat
+			// 
+			this->btBlackHat->Name = L"btBlackHat";
+			this->btBlackHat->Size = System::Drawing::Size(194, 22);
+			this->btBlackHat->Text = L"Black-hat";
+			this->btBlackHat->ToolTipText = L"Aplicar Top-hat (fechamento-original)";
+			this->btBlackHat->Click += gcnew System::EventHandler(this, &TelaPrincipal::btBlackHat_Click);
+			// 
 			// btHistograma
 			// 
 			this->btHistograma->ImageTransparentColor = System::Drawing::Color::Magenta;
@@ -1014,16 +1079,6 @@ private: System::Windows::Forms::ToolStripButton^ btGradMorf;
 			this->ofd2->FileName = L"openFileDialog2";
 			this->ofd2->Filter = L"Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
 			// 
-			// btGradMorf
-			// 
-			this->btGradMorf->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->btGradMorf->Name = L"btGradMorf";
-			this->btGradMorf->Size = System::Drawing::Size(131, 19);
-			this->btGradMorf->Text = L"Gradiente Morfológico";
-			this->btGradMorf->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
-			this->btGradMorf->ToolTipText = L"Aplicar gradiente morfológico";
-			this->btGradMorf->Click += gcnew System::EventHandler(this, &TelaPrincipal::btGradMorf_Click);
-			// 
 			// TelaPrincipal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1100,8 +1155,8 @@ private: System::Windows::Forms::ToolStripButton^ btGradMorf;
 		btErosion->Image = Image::FromFile("icones/erosion.png");
 		btDilatar->Text = "";
 		btDilatar->Image = Image::FromFile("icones/dilation.png");
-		btGradMorf->Text = "";
-		btGradMorf->Image = Image::FromFile("icones/gradientmorph.png");
+		btMorfologicas->Text = "";
+		btMorfologicas->Image = Image::FromFile("icones/gradientmorph.png");
 
 		//Texto de boas vindas e dicas
 		/*System::Windows::Forms::MessageBox::Show("Bem vindo ao meu editor ! " +
@@ -1806,17 +1861,98 @@ private: System::Windows::Forms::ToolStripButton^ btGradMorf;
 		}
 	}
 
-	private: System::Void btGradMorf_Click(System::Object^ sender, System::EventArgs^ e) {
-		Mat resultErode,resultDila,resultSub;
-		Mat m = getStructuringElement(MORPH_ELLIPSE, cv::Size(2, 2), cv::Point(-1, 1));
-		Mat backup = testeVideos->modificando;
-		erode(testeVideos->modificando, resultErode, m, cv::Point(-1, 1), 1);//erodir original
-		Mat diffE = resultErode - backup;
-		dilate(backup, resultDila, m, cv::Point(-1, 1), 1);//dilatar original
-		resultSub = resultDila - backup;//subtracao
+	private: System::Void btGrandienteMorf_Click(System::Object^ sender, System::EventArgs^ e) {
+		/*Mat resultErode, resultDila, resultSub;
+		Mat elemento = getStructuringElement(MORPH_ELLIPSE, cv::Size(2, 2), cv::Point(-1, 1));//criando elemento
+		erode(testeVideos->modificando, resultErode, elemento, cv::Point(-1, 1), 1);//erodir imagem inicial
+		dilate(testeVideos->modificando, resultDila, elemento, cv::Point(-1, 1), 1);//dilatar original
+		resultSub = resultDila - resultErode;//subtracao
+		testeVideos->salvamostra(resultSub, 0);
+		testeVideos->LerImg();
 		imshow("Imagem", resultSub);
-		testeVideos->modificando = resultSub;
-		//testeVideos->LerImg();
+		listHistórico->Items->Add("Aplicou um gradiente morfológico a imagem");*/
+		Mat grdnt;
+		Mat elemento = getStructuringElement(MORPH_ELLIPSE, cv::Size(2, 2), cv::Point(-1, -1));
+		morphologyEx(testeVideos->modificando, grdnt, MORPH_GRADIENT, elemento, cv::Point(-1, -1), 3);
+		testeVideos->salvamostra(grdnt, 0);
+		testeVideos->LerImg();
+		listHistórico->Items->Add("Aplicou um gradiente morfológico a imagem");
+	}
+
+	private: System::Void btOpening_Click(System::Object^ sender, System::EventArgs^ e) {
+		/*Mat resultErode, resultDila;
+		Mat elemento = getStructuringElement(MORPH_ELLIPSE, cv::Size(2, 2), cv::Point(-1, 1));//criando elemento
+		erode(testeVideos->modificando, resultErode, elemento, cv::Point(-1, 1), 1);//erodir imagem inicial
+		dilate(resultErode, resultDila, elemento, cv::Point(-1, 1), 1);//depois dilatar o resultado
+		testeVideos->salvamostra(resultDila, 0);
+		testeVideos->LerImg();
+		imshow("Imagem", testeVideos->modificando);
+		listHistórico->Items->Add("Aplicou opening (abertura) a imagem");*/
+		Mat opng;
+		Mat elemento = getStructuringElement(MORPH_ELLIPSE, cv::Size(2, 2), cv::Point(-1, -1));
+		morphologyEx(testeVideos->modificando, opng, MORPH_OPEN, elemento, cv::Point(-1, -1), 3);
+		testeVideos->salvamostra(opng, 0);
+		testeVideos->LerImg();
+		listHistórico->Items->Add("Aplicou opening (abertura) a imagem");
+	}
+
+	private: System::Void btClosing_Click(System::Object^ sender, System::EventArgs^ e) {
+		/*Mat resultErode, resultDila;
+		Mat elemento = getStructuringElement(MORPH_ELLIPSE, cv::Size(2, 2), cv::Point(-1, 1));//criando elemento
+		dilate(testeVideos->modificando, resultDila, elemento, cv::Point(-1, 1), 1);//dilatar imagem inicial
+		erode(resultDila, resultErode, elemento, cv::Point(-1, 1), 1);//depois erodir o resultado
+		testeVideos->salvamostra(resultErode, 0);
+		testeVideos->LerImg();
+		imshow("Imagem", testeVideos->modificando);
+		listHistórico->Items->Add("Aplicou closing (fechamento) a imagem");*/
+		Mat clsng;
+		Mat elemento = getStructuringElement(MORPH_ELLIPSE, cv::Size(2, 2), cv::Point(-1, -1));
+		morphologyEx(testeVideos->modificando, clsng, MORPH_CLOSE, elemento, cv::Point(-1, -1), 3);
+		testeVideos->salvamostra(clsng, 0);
+		testeVideos->LerImg();
+		listHistórico->Items->Add("Aplicou closing (fechamento) a imagem");
+	}
+
+	private: System::Void btTopHat_Click(System::Object^ sender, System::EventArgs^ e) {
+		/*Mat resultErode, resultDila, resultSub;
+		//opening
+		Mat elemento = getStructuringElement(MORPH_ELLIPSE, cv::Size(2, 2), cv::Point(-1, 1));//criando elemento
+		Mat inicial = testeVideos->modificando;
+		erode(testeVideos->modificando, resultErode, elemento, cv::Point(-1, 1), 1);//erodir imagem inicial
+		dilate(resultErode, resultDila, elemento, cv::Point(-1, 1), 1);//depois dilatar o resultado
+		//subtracao da imagem aberta da original
+		resultSub = inicial - resultDila;
+		testeVideos->salvamostra(resultDila, 0);
+		testeVideos->LerImg();
+		imshow("Imagem", testeVideos->modificando);
+		listHistórico->Items->Add("Aplicou Top-hat a imagem");*/
+		Mat tpHat;
+		Mat elemento = getStructuringElement(MORPH_ELLIPSE, cv::Size(2, 2), cv::Point(-1, -1));
+		morphologyEx(testeVideos->modificando, tpHat, MORPH_TOPHAT, elemento, cv::Point(-1, -1), 5);
+		testeVideos->salvamostra(tpHat, 0);
+		testeVideos->LerImg();
+		listHistórico->Items->Add("Aplicou Top-hat a imagem");
+	}
+
+	private: System::Void btBlackHat_Click(System::Object^ sender, System::EventArgs^ e) {
+		/*
+		Mat resultErode, resultDila, resultSub;
+		Mat elemento = getStructuringElement(MORPH_ELLIPSE, cv::Size(2, 2), cv::Point(-1, 1));//criando elemento
+		Mat inicial = testeVideos->modificando;
+		dilate(testeVideos->modificando, resultDila, elemento, cv::Point(-1, 1), 1);//dilatar imagem inicial
+		erode(resultDila, resultErode, elemento, cv::Point(-1, 1), 1);//depois erodir o resultado
+		//subtracao da imagem aberta da original
+		resultSub = resultErode - inicial;
+		testeVideos->salvamostra(resultSub, 0);
+		testeVideos->LerImg();
+		imshow("Imagem", testeVideos->modificando);
+		listHistórico->Items->Add("Aplicou Black-hat a imagem");*/
+		Mat blkHat;
+		Mat elemento = getStructuringElement(MORPH_ELLIPSE, cv::Size(2, 2), cv::Point(-1, -1));
+		morphologyEx(testeVideos->modificando,blkHat,MORPH_BLACKHAT,elemento, cv::Point(-1, -1), 5);
+		testeVideos->salvamostra(blkHat, 0);
+		testeVideos->LerImg();
+		listHistórico->Items->Add("Aplicou Black-hat a imagem");
 	}
 };
 }

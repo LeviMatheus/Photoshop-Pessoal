@@ -34,5 +34,8 @@
     <Image Include="..\..\..\Desktop\camera.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
+    <Image Include="..\..\MeuPS-icones\fundo.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -384,8 +384,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
 			this->toolBotoes->GripStyle = System::Windows::Forms::ToolStripGripStyle::Hidden;
 			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(20) {
 				this->btCamera, this->btImagem,
-					this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btMerge, this->btROI, this->btErosion, this->btDilatar,
-					this->btFBlur, this->btLimiarizacao, this->btPassaAlta, this->btMorfologicas, this->btHistograma, this->btAlgebricas, this->toolStripSeparator1,
+					this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btMerge, this->btROI, this->btFBlur, this->btLimiarizacao,
+					this->btPassaAlta, this->btErosion, this->btDilatar, this->btMorfologicas, this->btHistograma, this->btAlgebricas, this->toolStripSeparator1,
 					this->btReabrir, this->btRestaurar, this->btHistorico
 			});
 			this->toolBotoes->LayoutStyle = System::Windows::Forms::ToolStripLayoutStyle::Flow;
@@ -1107,7 +1107,20 @@ private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
 
 		}
 #pragma endregion
-	private: System::Void TelaPrincipal_Load(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void TelaPrincipal_Load(System::Object^ sender, System::EventArgs^ e) {
+		//abertura do programa
+		System::Windows::Forms::Form^ spl = gcnew Form();
+		spl->StartPosition = FormStartPosition::CenterScreen;
+		spl->BackColor = Color::Green;
+		spl->TransparencyKey = Color::Green;
+		spl->Width = 713;
+		spl->Height = 630;
+		spl->BackgroundImage = Image::FromFile("fundo.png");
+		spl->TopMost = true;
+		spl->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+		spl->Show();
+		Sleep(4500);
+		spl->Close();
 		testeVideos = new TesteVideos();
 		testeVideos->modificando = original;//linkando a imagem para não perder referencia
 

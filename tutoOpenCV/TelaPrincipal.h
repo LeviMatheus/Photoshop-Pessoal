@@ -181,6 +181,11 @@ private: System::Windows::Forms::ToolStripMenuItem^ btClosing;
 private: System::Windows::Forms::ToolStripMenuItem^ btGrandienteMorf;
 private: System::Windows::Forms::ToolStripMenuItem^ btTopHat;
 private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
+private: System::Windows::Forms::ToolStripDropDownButton^ btContornos;
+private: System::Windows::Forms::ToolStripMenuItem^ btFind;
+
+
+
 
 
 
@@ -253,6 +258,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
 			this->toolBotoes = (gcnew System::Windows::Forms::ToolStrip());
 			this->btCamera = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btImagem = (gcnew System::Windows::Forms::ToolStripButton());
+			this->btHistograma = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btCanais = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->xYZToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->hSVToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -270,8 +276,6 @@ private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
 			this->btInvert = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btMerge = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btROI = (gcnew System::Windows::Forms::ToolStripButton());
-			this->btErosion = (gcnew System::Windows::Forms::ToolStripButton());
-			this->btDilatar = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btFBlur = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->btFB1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btFB2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -307,13 +311,14 @@ private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
 			this->btPassaAlta = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->btLaplace = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btCanny = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btErosion = (gcnew System::Windows::Forms::ToolStripButton());
+			this->btDilatar = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btMorfologicas = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->btOpening = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btClosing = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btGrandienteMorf = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btTopHat = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btBlackHat = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->btHistograma = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btAlgebricas = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->btAdicao = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->add19 = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -328,6 +333,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
 			this->btSubtracao = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btMultiplicacao = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btDivisao = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btContornos = (gcnew System::Windows::Forms::ToolStripDropDownButton());
+			this->btFind = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStripSeparator1 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->btReabrir = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btRestaurar = (gcnew System::Windows::Forms::ToolStripButton());
@@ -382,11 +389,11 @@ private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
 			// 
 			this->toolBotoes->BackColor = System::Drawing::Color::Gainsboro;
 			this->toolBotoes->GripStyle = System::Windows::Forms::ToolStripGripStyle::Hidden;
-			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(20) {
+			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(21) {
 				this->btCamera, this->btImagem,
-					this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btMerge, this->btROI, this->btFBlur, this->btLimiarizacao,
-					this->btPassaAlta, this->btErosion, this->btDilatar, this->btMorfologicas, this->btHistograma, this->btAlgebricas, this->toolStripSeparator1,
-					this->btReabrir, this->btRestaurar, this->btHistorico
+					this->btHistograma, this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btMerge, this->btROI, this->btFBlur,
+					this->btLimiarizacao, this->btPassaAlta, this->btErosion, this->btDilatar, this->btMorfologicas, this->btAlgebricas, this->btContornos,
+					this->toolStripSeparator1, this->btReabrir, this->btRestaurar, this->btHistorico
 			});
 			this->toolBotoes->LayoutStyle = System::Windows::Forms::ToolStripLayoutStyle::Flow;
 			this->toolBotoes->Location = System::Drawing::Point(0, 0);
@@ -413,6 +420,16 @@ private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
 			this->btImagem->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
 			this->btImagem->ToolTipText = L"Abrir imagem";
 			this->btImagem->Click += gcnew System::EventHandler(this, &TelaPrincipal::btImagem_Click);
+			// 
+			// btHistograma
+			// 
+			this->btHistograma->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btHistograma->Name = L"btHistograma";
+			this->btHistograma->Size = System::Drawing::Size(73, 19);
+			this->btHistograma->Text = L"Histograma";
+			this->btHistograma->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btHistograma->ToolTipText = L"Mostrar histograma da imagem";
+			this->btHistograma->Click += gcnew System::EventHandler(this, &TelaPrincipal::btHistograma_Click);
 			// 
 			// btCanais
 			// 
@@ -560,26 +577,6 @@ private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
 			this->btROI->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
 			this->btROI->ToolTipText = L"Selecionar região de interesse na imagem";
 			this->btROI->Click += gcnew System::EventHandler(this, &TelaPrincipal::btROI_Click);
-			// 
-			// btErosion
-			// 
-			this->btErosion->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->btErosion->Name = L"btErosion";
-			this->btErosion->Size = System::Drawing::Size(46, 19);
-			this->btErosion->Text = L"Erosão";
-			this->btErosion->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
-			this->btErosion->ToolTipText = L"Erodir a imagem";
-			this->btErosion->Click += gcnew System::EventHandler(this, &TelaPrincipal::btErosion_Click);
-			// 
-			// btDilatar
-			// 
-			this->btDilatar->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->btDilatar->Name = L"btDilatar";
-			this->btDilatar->Size = System::Drawing::Size(60, 19);
-			this->btDilatar->Text = L"Dilatação";
-			this->btDilatar->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
-			this->btDilatar->ToolTipText = L"Dilatar a imagem";
-			this->btDilatar->Click += gcnew System::EventHandler(this, &TelaPrincipal::btDilatar_Click);
 			// 
 			// btFBlur
 			// 
@@ -849,16 +846,36 @@ private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
 			// btLaplace
 			// 
 			this->btLaplace->Name = L"btLaplace";
-			this->btLaplace->Size = System::Drawing::Size(114, 22);
+			this->btLaplace->Size = System::Drawing::Size(180, 22);
 			this->btLaplace->Text = L"Laplace";
 			this->btLaplace->Click += gcnew System::EventHandler(this, &TelaPrincipal::btLaplace_Click);
 			// 
 			// btCanny
 			// 
 			this->btCanny->Name = L"btCanny";
-			this->btCanny->Size = System::Drawing::Size(114, 22);
+			this->btCanny->Size = System::Drawing::Size(180, 22);
 			this->btCanny->Text = L"Canny";
 			this->btCanny->Click += gcnew System::EventHandler(this, &TelaPrincipal::btCanny_Click);
+			// 
+			// btErosion
+			// 
+			this->btErosion->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btErosion->Name = L"btErosion";
+			this->btErosion->Size = System::Drawing::Size(46, 19);
+			this->btErosion->Text = L"Erosão";
+			this->btErosion->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btErosion->ToolTipText = L"Erodir a imagem";
+			this->btErosion->Click += gcnew System::EventHandler(this, &TelaPrincipal::btErosion_Click);
+			// 
+			// btDilatar
+			// 
+			this->btDilatar->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btDilatar->Name = L"btDilatar";
+			this->btDilatar->Size = System::Drawing::Size(60, 19);
+			this->btDilatar->Text = L"Dilatação";
+			this->btDilatar->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btDilatar->ToolTipText = L"Dilatar a imagem";
+			this->btDilatar->Click += gcnew System::EventHandler(this, &TelaPrincipal::btDilatar_Click);
 			// 
 			// btMorfologicas
 			// 
@@ -909,16 +926,6 @@ private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
 			this->btBlackHat->Text = L"Black-hat";
 			this->btBlackHat->ToolTipText = L"Aplicar Top-hat (fechamento-original)";
 			this->btBlackHat->Click += gcnew System::EventHandler(this, &TelaPrincipal::btBlackHat_Click);
-			// 
-			// btHistograma
-			// 
-			this->btHistograma->ImageTransparentColor = System::Drawing::Color::Magenta;
-			this->btHistograma->Name = L"btHistograma";
-			this->btHistograma->Size = System::Drawing::Size(73, 19);
-			this->btHistograma->Text = L"Histograma";
-			this->btHistograma->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
-			this->btHistograma->ToolTipText = L"Mostrar histograma da imagem";
-			this->btHistograma->Click += gcnew System::EventHandler(this, &TelaPrincipal::btHistograma_Click);
 			// 
 			// btAlgebricas
 			// 
@@ -1026,6 +1033,24 @@ private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
 			this->btDivisao->Size = System::Drawing::Size(146, 22);
 			this->btDivisao->Text = L"Divisão";
 			this->btDivisao->Click += gcnew System::EventHandler(this, &TelaPrincipal::btDivisao_Click);
+			// 
+			// btContornos
+			// 
+			this->btContornos->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->btFind });
+			this->btContornos->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btContornos->Name = L"btContornos";
+			this->btContornos->Size = System::Drawing::Size(76, 19);
+			this->btContornos->Text = L"Contornos";
+			this->btContornos->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btContornos->ToolTipText = L"Contornos";
+			// 
+			// btFind
+			// 
+			this->btFind->Name = L"btFind";
+			this->btFind->Size = System::Drawing::Size(180, 22);
+			this->btFind->Text = L"Desenhar contornos";
+			this->btFind->ToolTipText = L"Desenhar contornos";
+			this->btFind->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFind_Click);
 			// 
 			// toolStripSeparator1
 			// 
@@ -1966,6 +1991,25 @@ private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
 		testeVideos->salvamostra(blkHat, 0);
 		testeVideos->LerImg();
 		listHistórico->Items->Add("Aplicou Black-hat a imagem");
+	}
+
+	private: System::Void btFind_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat canny;
+		RNG rng;
+		Canny(testeVideos->modificando, canny, 50, 150, 3);
+		vector<vector<cv::Point> > contours;
+		vector<Vec4i> hierarchy;
+		findContours(canny,contours,hierarchy,CV_RETR_TREE,CV_CHAIN_APPROX_SIMPLE,cv::Point(0,0));
+		Mat drawing = Mat::zeros(canny.size(), CV_8UC3);
+		for (int i = 0; i < contours.size(); i++) {
+			Scalar color = Scalar(rng.uniform(0, 255), rng.uniform(0, 255), rng.uniform(0, 255));
+			drawContours(drawing, contours, i, color, 1, 8, hierarchy, 0, cv::Point());
+		}
+		/*namedWindow("Contornos",1);
+		imshow("Contornos",drawing);*/
+		vector<Vec3f> circles;
+		testeVideos->modificando = drawing;
+		testeVideos->salvamostra(testeVideos->modificando, 0);
 	}
 };
 }

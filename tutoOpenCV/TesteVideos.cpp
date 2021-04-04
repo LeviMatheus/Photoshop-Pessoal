@@ -189,7 +189,7 @@ void TesteVideos::salvamostra(cv::Mat img, int op)
     //imwrite("Imagem.jpg", img);
     SalvarImg(img);
     MostrarImg(img);
-    setMouseCallback("Imagem", onMouse, &img);
+    //setMouseCallback("Imagem", onMouse, &img);
 }
 
 void TesteVideos::SalvarImg(cv::Mat img) {
@@ -199,7 +199,7 @@ void TesteVideos::SalvarImg(cv::Mat img) {
 void TesteVideos::MostrarImg(cv::Mat img) {
     imshow("Imagem", img);
     printTela = img;
-    setMouseCallback("Imagem", onMouse, &modificando);
+    //setMouseCallback("Imagem", onMouse, &modificando);
 }
 
 void TesteVideos::LerImg()

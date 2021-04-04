@@ -10,6 +10,7 @@
 #include <vcclr.h>
 #include <msclr\marshal_cppstd.h>
 #include "TesteVideos.h"
+#include <vector>
 
 namespace AulasPDI {
 
@@ -38,6 +39,8 @@ namespace AulasPDI {
 	//Mat modificando;
 	Mat backupImage;
 	int mouseX, mouseY;
+	vector <Mat> imagens;
+	int indice = 0;
 
 	public ref class TelaPrincipal : public System::Windows::Forms::Form
 	{
@@ -183,6 +186,10 @@ private: System::Windows::Forms::ToolStripMenuItem^ btTopHat;
 private: System::Windows::Forms::ToolStripMenuItem^ btBlackHat;
 private: System::Windows::Forms::ToolStripDropDownButton^ btContornos;
 private: System::Windows::Forms::ToolStripMenuItem^ btFind;
+private: System::Windows::Forms::ToolStripButton^ btInRange;
+private: System::Windows::Forms::ToolStripButton^ btTracking;
+
+
 
 
 
@@ -335,6 +342,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 			this->btDivisao = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btContornos = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->btFind = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btInRange = (gcnew System::Windows::Forms::ToolStripButton());
+			this->btTracking = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStripSeparator1 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->btReabrir = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btRestaurar = (gcnew System::Windows::Forms::ToolStripButton());
@@ -389,11 +398,11 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 			// 
 			this->toolBotoes->BackColor = System::Drawing::Color::Gainsboro;
 			this->toolBotoes->GripStyle = System::Windows::Forms::ToolStripGripStyle::Hidden;
-			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(21) {
+			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(23) {
 				this->btCamera, this->btImagem,
 					this->btHistograma, this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btMerge, this->btROI, this->btFBlur,
 					this->btLimiarizacao, this->btPassaAlta, this->btErosion, this->btDilatar, this->btMorfologicas, this->btAlgebricas, this->btContornos,
-					this->toolStripSeparator1, this->btReabrir, this->btRestaurar, this->btHistorico
+					this->btInRange, this->btTracking, this->toolStripSeparator1, this->btReabrir, this->btRestaurar, this->btHistorico
 			});
 			this->toolBotoes->LayoutStyle = System::Windows::Forms::ToolStripLayoutStyle::Flow;
 			this->toolBotoes->Location = System::Drawing::Point(0, 0);
@@ -846,14 +855,14 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 			// btLaplace
 			// 
 			this->btLaplace->Name = L"btLaplace";
-			this->btLaplace->Size = System::Drawing::Size(180, 22);
+			this->btLaplace->Size = System::Drawing::Size(114, 22);
 			this->btLaplace->Text = L"Laplace";
 			this->btLaplace->Click += gcnew System::EventHandler(this, &TelaPrincipal::btLaplace_Click);
 			// 
 			// btCanny
 			// 
 			this->btCanny->Name = L"btCanny";
-			this->btCanny->Size = System::Drawing::Size(180, 22);
+			this->btCanny->Size = System::Drawing::Size(114, 22);
 			this->btCanny->Text = L"Canny";
 			this->btCanny->Click += gcnew System::EventHandler(this, &TelaPrincipal::btCanny_Click);
 			// 
@@ -1052,6 +1061,25 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 			this->btFind->ToolTipText = L"Desenhar contornos";
 			this->btFind->Click += gcnew System::EventHandler(this, &TelaPrincipal::btFind_Click);
 			// 
+			// btInRange
+			// 
+			this->btInRange->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btInRange->Name = L"btInRange";
+			this->btInRange->Size = System::Drawing::Size(54, 19);
+			this->btInRange->Text = L"InRange";
+			this->btInRange->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btInRange->ToolTipText = L"Intervalo de faixas";
+			this->btInRange->Click += gcnew System::EventHandler(this, &TelaPrincipal::btInRange_Click);
+			// 
+			// btTracking
+			// 
+			this->btTracking->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btTracking->Name = L"btTracking";
+			this->btTracking->Size = System::Drawing::Size(55, 19);
+			this->btTracking->Text = L"Tracking";
+			this->btTracking->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btTracking->ToolTipText = L"Tracking de objetos";
+			// 
 			// toolStripSeparator1
 			// 
 			this->toolStripSeparator1->Name = L"toolStripSeparator1";
@@ -1143,11 +1171,14 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		spl->BackgroundImage = Image::FromFile("fundo.png");
 		spl->TopMost = true;
 		spl->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-		spl->Show();
-		Sleep(4500);
+		//spl->Show();
+		//Sleep(4500);
 		spl->Close();
 		testeVideos = new TesteVideos();
 		testeVideos->modificando = original;//linkando a imagem para não perder referencia
+		imagens.push_back(original);
+		//imshow("inicio", imagens[0]);
+		//indice++;
 
 		/* colocando a lena de fundo */
 		Image^ imgFundo = Image::FromFile("lena.jpg");
@@ -1195,6 +1226,12 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		btDilatar->Image = Image::FromFile("icones/dilation.png");
 		btMorfologicas->Text = "";
 		btMorfologicas->Image = Image::FromFile("icones/gradientmorph.png");
+		btContornos->Text = "";
+		btContornos->Image = Image::FromFile("icones/contornos.png");
+		btInRange->Text = "";
+		btInRange->Image = Image::FromFile("icones/InRange.png");
+		btWatershed->Text = "";
+		btWatershed->Image = Image::FromFile("icones/watershed.png");
 
 		//Texto de boas vindas e dicas
 		/*System::Windows::Forms::MessageBox::Show("Bem vindo ao meu editor ! " +
@@ -1204,7 +1241,22 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		" e captura uma imagem utilizando espaço.");*/
 	}
 
+	private: System::Void undoTo() {
+		indice--;
+		testeVideos->SalvarImg(imagens[indice]);
+		testeVideos->LerImg();
+		testeVideos->MostrarImg(testeVideos->modificando);
+		listHistórico->Items->Add("Desfez última modificação da imagem");
+		//testeVideos->modificando = imagens[indice];
+		//testeVideos->salvamostra(testeVideos->modificando, 0);
+		/*indice = distance(imagens.begin(), imagens.end());
+		testeVideos->modificando = imagens[indice];*/
+	}
 
+	private: System::Void salvarEstado() {
+		imagens.push_back(testeVideos->modificando);
+		indice++;
+	}
 
 	public: MatND geraHistograma(const Mat imagem, Mat* Histograma) {
 		MatND hist;
@@ -1254,6 +1306,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		}
 		//salvar imagens
 		System::Windows::Forms::MessageBox::Show("Imagens convertidas salvas na pasta do projeto");
+		salvarEstado();
 	}
 
 	private: System::Void mostrarHistograma(cv::Mat imagem) {//gera histograma da imagem de parametro
@@ -1283,6 +1336,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 	private: System::Void btImagem_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (TelaPrincipal::ofd1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
+			imagens.clear();
 			original = imread((char*)(void*)Marshal::StringToHGlobalAnsi(TelaPrincipal::ofd1->FileName));
 			testeVideos->modificando = original;
 			TelaPrincipal::nomeTool->Visible = true;
@@ -1301,6 +1355,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 			//TelaPrincipal::Width = imgFundo->Width; ajustar ao tamanho da imagem
 			//TelaPrincipal::Height = imgFundo->Height;
 			listHistórico->Items->Add("Abriu imagem: " + ofd1->FileName);
+			indice = 0;
+			imagens.push_back(original);
 		}
 		else {
 			System::Windows::Forms::MessageBox::Show("Operação cancelada");
@@ -1379,6 +1435,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		//imshow("Imagem", testeVideos->modificando);
 		testeVideos->TracksEFiltros("Imagem", 0);
 		listHistórico->Items->Add("Aplicou blur");
+		salvarEstado();
 		//imshow("Imagem", testeVideos->modificando);
 		//modificando = testeVideos->modificando;
 	}
@@ -1389,6 +1446,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		//imshow("Imagem", testeVideos->modificando);
 		testeVideos->TracksEFiltros("Imagem", 1);
 		listHistórico->Items->Add("Aplicou Gaussian blur");
+		salvarEstado();
 	}
 
 	private: System::Void btFB3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1397,6 +1455,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		//imshow("Imagem", testeVideos->modificando);
 		testeVideos->TracksEFiltros("Imagem", 2);
 		listHistórico->Items->Add("Aplicou Median");
+		salvarEstado();
 	}
 
 	private: System::Void btFB4_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1405,6 +1464,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		//imshow("Imagem", testeVideos->modificando);
 		testeVideos->TracksEFiltros("Imagem", 3);
 		listHistórico->Items->Add("Aplicou Bilateral filter");
+		salvarEstado();
 	}
 
 	private: System::Void btHistograma_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1421,15 +1481,21 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 	}
 
 	private: System::Void btRestaurar_Click(System::Object^ sender, System::EventArgs^ e) {
-		testeVideos->modificando = original;
-		//testeVideos->SalvarImg(testeVideos->modificando);
+		/*testeVideos->modificando = original;
 		testeVideos->salvamostra(testeVideos->modificando, 0);
-		listHistórico->Items->Add("Restaurou a imagem para a original");
+		listHistórico->Items->Add("Restaurou a imagem para a original");*/
+		if (indice - 1 < 0) {
+			System::Windows::Forms::MessageBox::Show("Imagem original");
+		}
+		else {
+			undoTo();
+		}
 	}
 
 	private: System::Void btLaplace_Click(System::Object^ sender, System::EventArgs^ e) {
 		testeVideos->passaAlta(1);
 		listHistórico->Items->Add("Aplicou Laplace");
+		salvarEstado();
 	}
 
 	private: System::Void btHistorico_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1453,6 +1519,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 				//imshow("Soma", resultante);
 				testeVideos->modificando = resultante;
 				testeVideos->salvamostra(testeVideos->modificando, 0);
+				salvarEstado();
 			}
 			catch (std::exception& ex) {
 				string excp = ex.what();
@@ -1480,6 +1547,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 				//addWeighted(testeVideos->modificando, 0.5, testeVideos->algebrica, 0.5, 0, resultante);
 				//imshow("Subtracao", resultante);
 				testeVideos->salvamostra(testeVideos->modificando, 0);
+				salvarEstado();
 			}
 			catch (std::exception& ex) {
 				string excp = ex.what();
@@ -1505,6 +1573,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 				multiply(testeVideos->modificando, testeVideos->algebrica, resultante, 0.01);
 				testeVideos->modificando = resultante;
 				testeVideos->salvamostra(testeVideos->modificando, 0);
+				salvarEstado();
 			}
 			catch (std::exception& ex) {
 				string excp = ex.what();
@@ -1530,6 +1599,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 				divide(testeVideos->modificando, testeVideos->algebrica, resultante, 1);
 				testeVideos->modificando = resultante;
 				testeVideos->salvamostra(testeVideos->modificando, 0);
+				salvarEstado();
 			}
 			catch (std::exception& ex) {
 				string excp = ex.what();
@@ -1594,6 +1664,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		//testeVideos->LerImg();
 		listHistórico->Items->Add("Aumentou 10 de brilho a imagem");
+		salvarEstado();
 	}
 
 	private: System::Void btDimBrilho_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1603,6 +1674,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		//testeVideos->LerImg();
 		listHistórico->Items->Add("Diminuiu 10 de brilho a imagem");
+		salvarEstado();
 	}
 
 	private: System::Void tbAumCon_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1612,6 +1684,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		//testeVideos->LerImg();
 		listHistórico->Items->Add("Aumentou contraste da imagem");
+		salvarEstado();
 	}
 
 	private: System::Void btDimCon_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1621,6 +1694,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		//testeVideos->LerImg();
 		listHistórico->Items->Add("Diminuiu contraste da imagem");
+		salvarEstado();
 	}
 
 	private: System::Void btInvert_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1629,6 +1703,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		testeVideos->modificando = invertida;
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Inverteu imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem2_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1637,6 +1712,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 50, 255, 0);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 50 threshold binário na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1645,6 +1721,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 100, 255, 0);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 100 threshold binário na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem4_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1653,6 +1730,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 150, 255, 0);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 150 threshold binário na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem5_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1661,6 +1739,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 200, 255, 0);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 200 threshold binário na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem6_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1669,6 +1748,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 50, 255, 1);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 50 threshold binário invertido na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem7_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1677,6 +1757,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 100, 255, 1);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 100 threshold binário invertido na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem8_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1685,6 +1766,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 150, 255, 1);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 150 threshold binário invertido na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem9_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1693,6 +1775,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 200, 255, 1);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 200 threshold binário invertido na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem10_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1701,6 +1784,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 50, 255, 2);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 50 threshold truncado na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem11_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1709,6 +1793,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 100, 255, 2);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 100 threshold truncado na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem12_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1717,6 +1802,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 150, 255, 2);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 150 threshold truncado na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem13_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1725,6 +1811,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 200, 255, 2);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 200 threshold truncado na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem14_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1733,6 +1820,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 50, 255, 3);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 50 threshold To Zero na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem15_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1741,6 +1829,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 100, 255, 3);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 100 threshold To Zero na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem16_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1749,6 +1838,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 150, 255, 3);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 150 threshold To Zero na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem17_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1757,6 +1847,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 200, 255, 3);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 200 threshold To Zero na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void adaptiveToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1765,6 +1856,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		adaptiveThreshold(src_gray, testeVideos->modificando, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY, 3+1*2, 0);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou adaptive threshold na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem21_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1773,6 +1865,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 200, 255, 4);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 200 threshold To Zero invertido na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem20_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1781,6 +1874,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 150, 255, 4);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 150 threshold To Zero invertido na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem19_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1789,6 +1883,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 100, 255, 4);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 100 threshold To Zero invertido na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void toolStripMenuItem18_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1797,6 +1892,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		threshold(src_gray, testeVideos->modificando, 50, 255, 4);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 50 threshold To Zero invertido na imagem");
+		salvarEstado();
 	}
 
 	private: System::Void btCanny_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1805,6 +1901,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		testeVideos->modificando = canny;
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou detecção de borda Canny na imagem");
+		salvarEstado();
 		/*testeVideos->LerImg();
 		testeVideos->MostrarImg(testeVideos->modificando);*/
 	}
@@ -1838,6 +1935,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 					listHistórico->Items->Add("Uniu 3 canais a uma imagem, Arquivo 1: " + fileCanal1->FileName
 						+ "Arquivo 2: " + fileCanal2->FileName
 						+ "Arquivo 3: " + fileCanal3->FileName);
+					salvarEstado();
 				}else
 					System::Windows::Forms::MessageBox::Show("Operação cancelada");
 			else
@@ -1855,6 +1953,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		testeVideos->LerImg();
 		testeVideos->MostrarImg(testeVideos->modificando);
 		listHistórico->Items->Add("Selecionou uma região de interesse, tamanho: X:"+rct.width.ToString()+" Y:"+rct.height.ToString());
+		salvarEstado();
 	}
 
 	private: System::Void btErosion_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1870,6 +1969,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 			Mat diffE = backup - testeVideos->modificando;
 			imshow("diff", diffE);
 			imwrite("diff-erosao.png", diffE);
+			salvarEstado();
 		}
 		catch (std::exception& ex) {
 			string excp = ex.what();
@@ -1891,6 +1991,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 			Mat diffD = testeVideos->modificando - backup;
 			imshow("diff", diffD);
 			imwrite("diff-dilatacao.png", diffD);
+			salvarEstado();
 		}
 		catch (std::exception& ex) {
 			string excp = ex.what();
@@ -1932,6 +2033,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		testeVideos->salvamostra(opng, 0);
 		testeVideos->LerImg();
 		listHistórico->Items->Add("Aplicou opening (abertura) a imagem");
+		salvarEstado();
 	}
 
 	private: System::Void btClosing_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1949,6 +2051,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		testeVideos->salvamostra(clsng, 0);
 		testeVideos->LerImg();
 		listHistórico->Items->Add("Aplicou closing (fechamento) a imagem");
+		salvarEstado();
 	}
 
 	private: System::Void btTopHat_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1970,6 +2073,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		testeVideos->salvamostra(tpHat, 0);
 		testeVideos->LerImg();
 		listHistórico->Items->Add("Aplicou Top-hat a imagem");
+		salvarEstado();
 	}
 
 	private: System::Void btBlackHat_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1991,6 +2095,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		testeVideos->salvamostra(blkHat, 0);
 		testeVideos->LerImg();
 		listHistórico->Items->Add("Aplicou Black-hat a imagem");
+		salvarEstado();
 	}
 
 	private: System::Void btFind_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -2010,6 +2115,17 @@ private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 		vector<Vec3f> circles;
 		testeVideos->modificando = drawing;
 		testeVideos->salvamostra(testeVideos->modificando, 0);
+		salvarEstado();
+	}
+
+	private: System::Void btInRange_Click(System::Object^ sender, System::EventArgs^ e) {
+		Mat gray,result;
+		cvtColor(testeVideos->modificando, gray, CV_BGR2GRAY);
+		Scalar min_vals(200, 0, 0);
+		Scalar max_vals(255, 255, 255);
+		inRange(testeVideos->modificando, min_vals, max_vals, testeVideos->modificando);
+		testeVideos->MostrarImg(testeVideos->modificando);
+		salvarEstado();
 	}
 };
 }

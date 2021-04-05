@@ -188,6 +188,8 @@ private: System::Windows::Forms::ToolStripDropDownButton^ btContornos;
 private: System::Windows::Forms::ToolStripMenuItem^ btFind;
 private: System::Windows::Forms::ToolStripButton^ btInRange;
 private: System::Windows::Forms::ToolStripButton^ btTracking;
+private: System::Windows::Forms::ToolStripButton^ btSplit;
+
 
 
 
@@ -281,6 +283,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 			this->tbAumCon = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btDimCon = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btInvert = (gcnew System::Windows::Forms::ToolStripButton());
+			this->btSplit = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btMerge = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btROI = (gcnew System::Windows::Forms::ToolStripButton());
 			this->btFBlur = (gcnew System::Windows::Forms::ToolStripDropDownButton());
@@ -398,17 +401,17 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 			// 
 			this->toolBotoes->BackColor = System::Drawing::Color::Gainsboro;
 			this->toolBotoes->GripStyle = System::Windows::Forms::ToolStripGripStyle::Hidden;
-			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(23) {
+			this->toolBotoes->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(24) {
 				this->btCamera, this->btImagem,
-					this->btHistograma, this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btMerge, this->btROI, this->btFBlur,
-					this->btLimiarizacao, this->btPassaAlta, this->btErosion, this->btDilatar, this->btMorfologicas, this->btAlgebricas, this->btContornos,
-					this->btInRange, this->btTracking, this->toolStripSeparator1, this->btReabrir, this->btRestaurar, this->btHistorico
+					this->btHistograma, this->btCanais, this->btBrilho, this->btContraste, this->btInvert, this->btSplit, this->btMerge, this->btROI,
+					this->btFBlur, this->btLimiarizacao, this->btPassaAlta, this->btErosion, this->btDilatar, this->btMorfologicas, this->btAlgebricas,
+					this->btContornos, this->btInRange, this->btTracking, this->toolStripSeparator1, this->btReabrir, this->btRestaurar, this->btHistorico
 			});
 			this->toolBotoes->LayoutStyle = System::Windows::Forms::ToolStripLayoutStyle::Flow;
 			this->toolBotoes->Location = System::Drawing::Point(0, 0);
 			this->toolBotoes->Name = L"toolBotoes";
 			this->toolBotoes->RenderMode = System::Windows::Forms::ToolStripRenderMode::Professional;
-			this->toolBotoes->Size = System::Drawing::Size(784, 45);
+			this->toolBotoes->Size = System::Drawing::Size(784, 67);
 			this->toolBotoes->TabIndex = 2;
 			// 
 			// btCamera
@@ -457,49 +460,49 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 			// xYZToolStripMenuItem
 			// 
 			this->xYZToolStripMenuItem->Name = L"xYZToolStripMenuItem";
-			this->xYZToolStripMenuItem->Size = System::Drawing::Size(124, 22);
+			this->xYZToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->xYZToolStripMenuItem->Text = L"XYZ";
 			this->xYZToolStripMenuItem->Click += gcnew System::EventHandler(this, &TelaPrincipal::xYZToolStripMenuItem_Click_1);
 			// 
 			// hSVToolStripMenuItem
 			// 
 			this->hSVToolStripMenuItem->Name = L"hSVToolStripMenuItem";
-			this->hSVToolStripMenuItem->Size = System::Drawing::Size(124, 22);
+			this->hSVToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->hSVToolStripMenuItem->Text = L"HSV";
 			this->hSVToolStripMenuItem->Click += gcnew System::EventHandler(this, &TelaPrincipal::hSVToolStripMenuItem_Click);
 			// 
 			// hSLToolStripMenuItem
 			// 
 			this->hSLToolStripMenuItem->Name = L"hSLToolStripMenuItem";
-			this->hSLToolStripMenuItem->Size = System::Drawing::Size(124, 22);
+			this->hSLToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->hSLToolStripMenuItem->Text = L"HSL";
 			this->hSLToolStripMenuItem->Click += gcnew System::EventHandler(this, &TelaPrincipal::hSLToolStripMenuItem_Click);
 			// 
 			// lUVToolStripMenuItem
 			// 
 			this->lUVToolStripMenuItem->Name = L"lUVToolStripMenuItem";
-			this->lUVToolStripMenuItem->Size = System::Drawing::Size(124, 22);
+			this->lUVToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->lUVToolStripMenuItem->Text = L"LUV";
 			this->lUVToolStripMenuItem->Click += gcnew System::EventHandler(this, &TelaPrincipal::lUVToolStripMenuItem_Click);
 			// 
 			// lABToolStripMenuItem
 			// 
 			this->lABToolStripMenuItem->Name = L"lABToolStripMenuItem";
-			this->lABToolStripMenuItem->Size = System::Drawing::Size(124, 22);
+			this->lABToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->lABToolStripMenuItem->Text = L"LAB";
 			this->lABToolStripMenuItem->Click += gcnew System::EventHandler(this, &TelaPrincipal::lABToolStripMenuItem_Click);
 			// 
 			// yCRCBToolStripMenuItem
 			// 
 			this->yCRCBToolStripMenuItem->Name = L"yCRCBToolStripMenuItem";
-			this->yCRCBToolStripMenuItem->Size = System::Drawing::Size(124, 22);
+			this->yCRCBToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->yCRCBToolStripMenuItem->Text = L"YCRCB";
 			this->yCRCBToolStripMenuItem->Click += gcnew System::EventHandler(this, &TelaPrincipal::yCRCBToolStripMenuItem_Click);
 			// 
 			// grayscaleToolStripMenuItem
 			// 
 			this->grayscaleToolStripMenuItem->Name = L"grayscaleToolStripMenuItem";
-			this->grayscaleToolStripMenuItem->Size = System::Drawing::Size(124, 22);
+			this->grayscaleToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->grayscaleToolStripMenuItem->Text = L"Grayscale";
 			this->grayscaleToolStripMenuItem->Click += gcnew System::EventHandler(this, &TelaPrincipal::grayscaleToolStripMenuItem_Click);
 			// 
@@ -566,6 +569,16 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 			this->btInvert->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
 			this->btInvert->ToolTipText = L"Inverter cores da imagem";
 			this->btInvert->Click += gcnew System::EventHandler(this, &TelaPrincipal::btInvert_Click);
+			// 
+			// btSplit
+			// 
+			this->btSplit->ImageTransparentColor = System::Drawing::Color::Magenta;
+			this->btSplit->Name = L"btSplit";
+			this->btSplit->Size = System::Drawing::Size(34, 19);
+			this->btSplit->Text = L"Split";
+			this->btSplit->TextImageRelation = System::Windows::Forms::TextImageRelation::Overlay;
+			this->btSplit->ToolTipText = L"Separar canais da imagem";
+			this->btSplit->Click += gcnew System::EventHandler(this, &TelaPrincipal::btSplit_Click);
 			// 
 			// btMerge
 			// 
@@ -1120,10 +1133,10 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 			this->listHistórico->Dock = System::Windows::Forms::DockStyle::Right;
 			this->listHistórico->FormattingEnabled = true;
 			this->listHistórico->HorizontalScrollbar = true;
-			this->listHistórico->Location = System::Drawing::Point(404, 45);
+			this->listHistórico->Location = System::Drawing::Point(404, 67);
 			this->listHistórico->Name = L"listHistórico";
 			this->listHistórico->ScrollAlwaysVisible = true;
-			this->listHistórico->Size = System::Drawing::Size(380, 492);
+			this->listHistórico->Size = System::Drawing::Size(380, 470);
 			this->listHistórico->TabIndex = 3;
 			this->listHistórico->Visible = false;
 			// 
@@ -1171,8 +1184,8 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 		spl->BackgroundImage = Image::FromFile("fundo.png");
 		spl->TopMost = true;
 		spl->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-		//spl->Show();
-		//Sleep(4500);
+		/*spl->Show();
+		Sleep(4500);*/
 		spl->Close();
 		testeVideos = new TesteVideos();
 		testeVideos->modificando = original;//linkando a imagem para não perder referencia
@@ -1230,8 +1243,8 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 		btContornos->Image = Image::FromFile("icones/contornos.png");
 		btInRange->Text = "";
 		btInRange->Image = Image::FromFile("icones/InRange.png");
-		btWatershed->Text = "";
-		btWatershed->Image = Image::FromFile("icones/watershed.png");
+		btTracking->Text = "";
+		btTracking->Image = Image::FromFile("icones/watershed.png");
 
 		//Texto de boas vindas e dicas
 		/*System::Windows::Forms::MessageBox::Show("Bem vindo ao meu editor ! " +
@@ -1253,7 +1266,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 		testeVideos->modificando = imagens[indice];*/
 	}
 
-	private: System::Void salvarEstado() {
+	public: System::Void salvarEstado() {
 		imagens.push_back(testeVideos->modificando);
 		indice++;
 	}
@@ -1372,6 +1385,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 
 	private: System::Void hSVToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		testeVideos->LerImg();
+		//testeVideos->modificando.convertTo(testeVideos->modificando, -1, 1, 95);
 		cvtColor(testeVideos->modificando, testeVideos->modificando, COLOR_BGR2HSV);
 		TelaPrincipal::Converter();
 		listHistórico->Items->Add("Converteu para HSV");
@@ -1455,6 +1469,8 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 		//imshow("Imagem", testeVideos->modificando);
 		testeVideos->TracksEFiltros("Imagem", 2);
 		listHistórico->Items->Add("Aplicou Median");
+		//medianBlur(testeVideos->modificando, testeVideos->modificando, 7);
+		//testeVideos->salvamostra(testeVideos->modificando, 0);
 		salvarEstado();
 	}
 
@@ -1709,7 +1725,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem2_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 50, 255, 0);
+		threshold(testeVideos->modificando, testeVideos->modificando, 50, 255, 0);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 50 threshold binário na imagem");
 		salvarEstado();
@@ -1718,7 +1734,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem3_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 100, 255, 0);
+		threshold(testeVideos->modificando, testeVideos->modificando, 100, 255, 0);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 100 threshold binário na imagem");
 		salvarEstado();
@@ -1726,8 +1742,8 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 
 	private: System::Void toolStripMenuItem4_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
-		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 150, 255, 0);
+		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);//(investigar) talvez n seja necessario deixar em grayscale
+		threshold(testeVideos->modificando, testeVideos->modificando, 150, 255, THRESH_BINARY);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 150 threshold binário na imagem");
 		salvarEstado();
@@ -1736,7 +1752,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem5_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 200, 255, 0);
+		threshold(testeVideos->modificando, testeVideos->modificando, 200, 255, 0);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 200 threshold binário na imagem");
 		salvarEstado();
@@ -1745,7 +1761,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem6_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 50, 255, 1);
+		threshold(testeVideos->modificando, testeVideos->modificando, 50, 255, 1);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 50 threshold binário invertido na imagem");
 		salvarEstado();
@@ -1754,7 +1770,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem7_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 100, 255, 1);
+		threshold(testeVideos->modificando, testeVideos->modificando, 100, 255, 1);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 100 threshold binário invertido na imagem");
 		salvarEstado();
@@ -1763,7 +1779,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem8_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 150, 255, 1);
+		threshold(testeVideos->modificando, testeVideos->modificando, 150, 255, 1);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 150 threshold binário invertido na imagem");
 		salvarEstado();
@@ -1772,7 +1788,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem9_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 200, 255, 1);
+		threshold(testeVideos->modificando, testeVideos->modificando, 200, 255, 1);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 200 threshold binário invertido na imagem");
 		salvarEstado();
@@ -1781,7 +1797,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem10_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 50, 255, 2);
+		threshold(testeVideos->modificando, testeVideos->modificando, 50, 255, 2);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 50 threshold truncado na imagem");
 		salvarEstado();
@@ -1790,7 +1806,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem11_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 100, 255, 2);
+		threshold(testeVideos->modificando, testeVideos->modificando, 100, 255, 2);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 100 threshold truncado na imagem");
 		salvarEstado();
@@ -1799,7 +1815,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem12_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 150, 255, 2);
+		threshold(testeVideos->modificando, testeVideos->modificando, 150, 255, 2);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 150 threshold truncado na imagem");
 		salvarEstado();
@@ -1808,7 +1824,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem13_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 200, 255, 2);
+		threshold(testeVideos->modificando, testeVideos->modificando, 200, 255, 2);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 200 threshold truncado na imagem");
 		salvarEstado();
@@ -1817,7 +1833,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem14_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 50, 255, 3);
+		threshold(testeVideos->modificando, testeVideos->modificando, 50, 255, 3);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 50 threshold To Zero na imagem");
 		salvarEstado();
@@ -1826,7 +1842,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem15_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 100, 255, 3);
+		threshold(testeVideos->modificando, testeVideos->modificando, 100, 255, 3);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 100 threshold To Zero na imagem");
 		salvarEstado();
@@ -1835,7 +1851,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem16_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 150, 255, 3);
+		threshold(testeVideos->modificando, testeVideos->modificando, 150, 255, 3);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 150 threshold To Zero na imagem");
 		salvarEstado();
@@ -1844,7 +1860,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem17_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 200, 255, 3);
+		threshold(testeVideos->modificando, testeVideos->modificando, 200, 255, 3);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 200 threshold To Zero na imagem");
 		salvarEstado();
@@ -1853,7 +1869,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void adaptiveToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		adaptiveThreshold(src_gray, testeVideos->modificando, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY, 3+1*2, 0);
+		adaptiveThreshold(testeVideos->modificando, testeVideos->modificando, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY, 3+1*2, 0);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou adaptive threshold na imagem");
 		salvarEstado();
@@ -1862,7 +1878,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem21_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 200, 255, 4);
+		threshold(testeVideos->modificando, testeVideos->modificando, 200, 255, 4);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 200 threshold To Zero invertido na imagem");
 		salvarEstado();
@@ -1871,7 +1887,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem20_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 150, 255, 4);
+		threshold(testeVideos->modificando, testeVideos->modificando, 150, 255, 4);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 150 threshold To Zero invertido na imagem");
 		salvarEstado();
@@ -1880,7 +1896,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem19_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 100, 255, 4);
+		threshold(testeVideos->modificando, testeVideos->modificando, 100, 255, 4);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 100 threshold To Zero invertido na imagem");
 		salvarEstado();
@@ -1889,7 +1905,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 	private: System::Void toolStripMenuItem18_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat src_gray;
 		cvtColor(testeVideos->modificando, src_gray, COLOR_BGR2GRAY);
-		threshold(src_gray, testeVideos->modificando, 50, 255, 4);
+		threshold(testeVideos->modificando, testeVideos->modificando, 50, 255, 4);
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		listHistórico->Items->Add("Aplicou 50 threshold To Zero invertido na imagem");
 		salvarEstado();
@@ -2104,7 +2120,7 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 		Canny(testeVideos->modificando, canny, 50, 150, 3);
 		vector<vector<cv::Point> > contours;
 		vector<Vec4i> hierarchy;
-		findContours(canny,contours,hierarchy,CV_RETR_TREE,CV_CHAIN_APPROX_SIMPLE,cv::Point(0,0));
+		findContours(canny, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
 		Mat drawing = Mat::zeros(canny.size(), CV_8UC3);
 		for (int i = 0; i < contours.size(); i++) {
 			Scalar color = Scalar(rng.uniform(0, 255), rng.uniform(0, 255), rng.uniform(0, 255));
@@ -2116,16 +2132,31 @@ private: System::Windows::Forms::ToolStripButton^ btTracking;
 		testeVideos->modificando = drawing;
 		testeVideos->salvamostra(testeVideos->modificando, 0);
 		salvarEstado();
+		System::Windows::Forms::MessageBox::Show("galinhas: " + contours.size().ToString());
 	}
 
 	private: System::Void btInRange_Click(System::Object^ sender, System::EventArgs^ e) {
 		Mat gray,result;
 		cvtColor(testeVideos->modificando, gray, CV_BGR2GRAY);
-		Scalar min_vals(200, 0, 0);
-		Scalar max_vals(255, 255, 255);
+		Scalar min_vals(250, 0, 0);
+		Scalar max_vals(255, 0, 0);
 		inRange(testeVideos->modificando, min_vals, max_vals, testeVideos->modificando);
 		testeVideos->MostrarImg(testeVideos->modificando);
 		salvarEstado();
+	}
+
+	private: System::Void btSplit_Click(System::Object^ sender, System::EventArgs^ e) {
+		try {
+			Mat canais[3];
+			split(testeVideos->modificando, canais);
+			testeVideos->modificando = canais[2];
+			testeVideos->salvamostra(testeVideos->modificando, 0);
+		}
+		catch (std::exception& ex) {
+			string excp = ex.what();
+			System::String^ texto = gcnew System::String(excp.c_str());
+			System::Windows::Forms::MessageBox::Show("Erro: " + texto);
+		}
 	}
 };
 }

@@ -6,4 +6,7 @@ Programa de edição de imagens feito em C++, utiliza técnicas de Processamento
 [Última modicação 05/04/2021]
 
 Vídeo explicando as funções disponíveis:
-[<img src="[https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg](https://i9.ytimg.com/vi/O3cuuI_fp2c/mqdefault.jpg?sqp=CLSkraUG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgXyhAMA8=&rs=AOn4CLBCrksuDmffA3WdFI7eyE_RgVQ3QQ)https://i9.ytimg.com/vi/O3cuuI_fp2c/mqdefault.jpg?sqp=CLSkraUG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgXyhAMA8=&rs=AOn4CLBCrksuDmffA3WdFI7eyE_RgVQ3QQ">](https://youtu.be/O3cuuI_fp2c "Editor de imagens PDI")
+<br/>
+<a href="https://youtu.be/O3cuuI_fp2c" target="_blank">
+ <img src="https://i9.ytimg.com/vi/O3cuuI_fp2c/mqdefault.jpg?sqp=CLSkraUG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgXyhAMA8=&rs=AOn4CLBCrksuDmffA3WdFI7eyE_RgVQ3QQ" alt="Vídeo explicativo"/>
+</a>

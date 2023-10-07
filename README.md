@@ -5,8 +5,5 @@
 Programa de edição de imagens feito em C++, utiliza técnicas de Processamento de Imagens (PDI). Utilize livremente para estudos, sinta-se livre para editar o código fonte desde de que dê aquela estrelinha para ajudar o conteúdo a chegar a mais pessoas!
 [Última modicação 05/04/2021]
 
-Vídeo explicando as funções disponíveis:
 <br/>
-<a href="https://youtu.be/O3cuuI_fp2c" target="_blank">
- <img src="https://i9.ytimg.com/vi/O3cuuI_fp2c/mqdefault.jpg?sqp=CLSkraUG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgXyhAMA8=&rs=AOn4CLBCrksuDmffA3WdFI7eyE_RgVQ3QQ" alt="Vídeo explicativo"/>
-</a>
+<a href="https://youtu.be/O3cuuI_fp2c" target="_blank">Vídeo Explicativo</a>
